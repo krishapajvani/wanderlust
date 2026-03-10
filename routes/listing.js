@@ -1,15 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const Listing = require("../models/listing.js"); // Fixes "Listing is not defined"
-const Booking = require("../models/booking.js"); // Required for the reserve route
+const Listing = require("../models/listing.js"); 
+const Booking = require("../models/booking.js"); 
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const listingController = require("../controllers/listing.js");
 const multer = require('multer');
 const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 
-// Main Listings Routes
+// ==========================================
+// 1. NON-PARAMETERIZED ROUTES (Specific Paths)
+// ==========================================
+
 router
   .route("/")
   .get(wrapAsync(listingController.index))
@@ -20,17 +23,20 @@ router
     wrapAsync(listingController.createListing)
   );
 
-// New Listing Form
+// New Listing Form - MUST stay above /:id
 router.get("/new", isLoggedIn, listingController.renderNewForm);
+
+// ==========================================
+// 2. PARAMETERIZED ROUTES (Routes with :id)
+// ==========================================
 
 /**
  * RESERVE ROUTE
- * Logic: Finds the listing, creates a new booking document, 
- * and saves it to the database.
+ * Placed above the general /:id route to ensure 'reserve' isn't treated as an ID
  */
 router.post("/:id/reserve", isLoggedIn, wrapAsync(async (req, res) => {
     const { id } = req.params;
-    const listing = await Listing.findById(id); // Correctly references the imported model
+    const listing = await Listing.findById(id); 
     
     if (!listing) {
         req.flash("error", "Listing does not exist!");
@@ -49,7 +55,10 @@ router.post("/:id/reserve", isLoggedIn, wrapAsync(async (req, res) => {
     res.redirect(`/listings/${id}`);
 }));
 
-// Individual Listing Routes
+// Edit Listing Form
+router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));
+
+// Individual Listing Operations (GET, PUT, DELETE)
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))
@@ -61,8 +70,5 @@ router
     wrapAsync(listingController.updateListing)
   )
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
-
-// Edit Listing Form
-router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));
 
 module.exports = router;
