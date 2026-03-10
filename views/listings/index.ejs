@@ -1,0 +1,181 @@
+<% layout("/layouts/boilerplate") %>
+<head>
+    <link rel="icon" type="images/png" href="images/home.png" style="background-color:#fe424d !important;">
+</head>
+<style>
+    /* 1. Full-Width Filter Bar Styling */
+    #filters {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 4rem; /* Wide padding to match high-end navbars */
+        background-color: #fff;
+        position: sticky;
+        top: 70px; /* Adjust this to match your Navbar height */
+        z-index: 10;
+        width: 100%;
+        border-bottom: 1px solid #ebebeb;
+    }
+
+    /* 2. Filter Wrapper & Scrolling */
+    .filter-wrapper {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .filter-container {
+        display: flex;
+        align-items: center;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        width: 100%;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .filter-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 3. Individual Filter Item */
+    .filter {
+        text-align: center;
+        margin-right: 2.5rem;
+        padding: 0.5rem 0;
+        opacity: 0.6;
+        transition: all 0.25s ease;
+        border-bottom: 2px solid transparent;
+        min-width: fit-content;
+    }
+
+    .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+        border-bottom: 2px solid #fe424d;
+        transform: translateY(-2px);
+    }
+
+    .filter i {
+        font-size: 1.3rem;
+        margin-bottom: 0.4rem;
+        display: block;
+    }
+
+    .filter p {
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .filter a {
+        color: #222 !important;
+        text-decoration: none !important;
+    }
+
+    /* 4. The Extraordinary Tax Toggle (Right-Aligned) */
+    .tax-toggle {
+        margin-left: auto; /* Pushes toggle to the far right */
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 14px;
+        height: 3.5rem;
+        padding: 0 1.2rem;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        transition: 0.3s;
+    }
+
+    .tax-toggle:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-color: #b0b0b0;
+    }
+
+    /* 5. Tax Info Visibility & Animation */
+    .tax-info {
+        display: none;
+        color: #4a4a4a;
+        animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 6. Responsive Padding */
+    @media (max-width: 992px) {
+        #filters { padding: 0.5rem 1.5rem; }
+        .tax-toggle { display: none; } /* Standard practice on smaller tablets */
+    }
+</style>
+
+<div id="filters">
+    <div class="filter-wrapper">
+        <div class="filter-container">
+            <div class="filter"><a href="/listings?category=Trending"><i class="fa-solid fa-fire"></i><p>Trending</p></a></div>
+            <div class="filter"><a href="/listings?category=Rooms"><i class="fa-solid fa-bed"></i><p>Rooms</p></a></div>
+            <div class="filter"><a href="/listings?category=Iconic Cities"><i class="fa-solid fa-mountain-city"></i><p>Cities</p></a></div>
+            <div class="filter"><a href="/listings?category=Mountains"><i class="fa-solid fa-mountain"></i><p>Mountains</p></a></div>
+            <div class="filter"><a href="/listings?category=Castles"><i class="fa-solid fa-fort-awesome"></i><p>Castles</p></a></div>
+            <div class="filter"><a href="/listings?category=Amazing Pools"><i class="fa-solid fa-person-swimming"></i><p>Pools</p></a></div>
+            <div class="filter"><a href="/listings?category=Camping"><i class="fa-solid fa-campground"></i><p>Camping</p></a></div>
+            <div class="filter"><a href="/listings?category=Farm"><i class="fa-solid fa-cow"></i><p>Farm</p></a></div>
+            <div class="filter"><a href="/listings?category=Arctic"><i class="fa-regular fa-snowflake"></i><p>Arctic</p></a></div>
+            <div class="filter"><a href="/listings?category=Beach"><i class="fa-solid fa-umbrella-beach"></i><p>Beach</p></a></div>
+            <div class="filter"><a href="/listings?category=Boat"><i class="fa-solid fa-ship"></i><p>Boat</p></a></div>
+            <div class="filter"><a href="/listings?category=Lake"><i class="fa-solid fa-water"></i><p>Lake</p></a></div>
+            <div class="filter"><a href="/listings?category=Countryside"><i class="fa-solid fa-wheat-awn"></i><p>Country</p></a></div>
+            <div class="filter"><a href="/listings?category=Historical Homes"><i class="fa-solid fa-monument"></i><p>Historical</p></a></div>
+        </div>
+    </div>
+
+    <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" style="cursor: pointer;">
+            <label class="form-check-label fw-bold text-secondary" for="flexSwitchCheckDefault" style="cursor: pointer; font-size: 0.85rem;">Display total after taxes</label>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-4">
+        <% if(allListings.length > 0) { %>
+            <% for(let listing of allListings) { %>
+            <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none">
+                <div class="card col listing-card index-card h-100 border-0">
+                    <div class="card-img-container position-relative rounded-4 overflow-hidden shadow-sm">
+                        <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 18rem; object-fit: cover;">
+                        <div class="card-img-overlay"></div>
+                    </div>
+                    <div class="card-body px-1">
+                        <p class="card-text text-dark">
+                            <span class="fs-6 fw-bold"><%= listing.title %></span> <br>
+                            <span class="text-secondary">&#8377; <%= listing.price.toLocaleString("en-IN") %> / night</span>
+                            <i class="tax-info text-primary fw-bold small"> &nbsp;+18% GST (Total: &#8377;<%= (listing.price * 1.18).toLocaleString("en-IN") %>)</i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <% } %>
+        <% } else { %>
+            <div class="col-12 text-center mt-5">
+                <h3 class="text-muted">No listings found for this category!</h3>
+                <a href="/listings" class="btn btn-danger rounded-pill px-4 mt-3">Browse All</a>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<script>
+    // Tax Toggle JavaScript
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    taxSwitch.addEventListener("change", function() {
+        let taxInfo = document.getElementsByClassName("tax-info");
+        for (let info of taxInfo) {
+            info.style.display = this.checked ? "inline" : "none";
+        }
+    });
+</script>

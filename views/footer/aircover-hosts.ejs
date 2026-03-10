@@ -1,0 +1,187 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --text-dark: #222222;
+        --protection-gold: #D4AF37;
+    }
+
+    .host-hero {
+        padding: 100px 0;
+        background: linear-gradient(rgba(0,0,0,0.02), rgba(0,0,0,0.02)), #ffffff;
+        text-align: center;
+    }
+
+    .host-logo {
+        font-weight: 900;
+        font-size: 4rem;
+        letter-spacing: -2px;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+
+    .host-logo span {
+        color: var(--brand-red);
+    }
+
+    .host-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-dark);
+        font-weight: 600;
+        margin-bottom: 40px;
+    }
+
+    /* Protection Cards */
+    .protection-card {
+        border: 1px solid #eee;
+        border-radius: 28px;
+        padding: 40px;
+        background: white;
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+
+    .protection-card:hover {
+        box-shadow: 0 15px 45px rgba(0,0,0,0.07);
+        border-color: var(--brand-red);
+    }
+
+    .shield-icon {
+        width: 60px;
+        height: 60px;
+        background: #fff1f3;
+        color: var(--brand-red);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+
+    /* Trust Section */
+    .trust-banner {
+        background: var(--text-dark);
+        color: white;
+        border-radius: 30px;
+        padding: 60px;
+        margin: 80px 0;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--brand-red);
+        display: block;
+    }
+
+    .claim-process-step {
+        border-left: 2px dashed #ddd;
+        padding-left: 30px;
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .step-number {
+        position: absolute;
+        left: -15px;
+        top: 0;
+        background: var(--brand-red);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+</style>
+
+<div class="host-hero">
+    <div class="container">
+        <h1 class="host-logo">air<span>cover</span></h1>
+        <p class="host-subtitle">For Hosts</p>
+        <h2 class="fw-bold mb-4" style="max-width: 800px; margin: 0 auto;">The most comprehensive protection in hosting. Included and free for every Host. Only on Staycation.</h2>
+        <a href="/listings/new" class="btn btn-danger btn-lg rounded-pill px-5 fw-bold mt-3">Start Hosting</a>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="protection-card">
+                <div class="shield-icon"><i class="fa-solid fa-house-shield"></i></div>
+                <h3 class="fw-bold">$3M Guest Damage Protection</h3>
+                <p class="text-muted">We cover damage caused by guests to your home and belongings, including specialized protection for art, valuables, and even pet damage.</p>
+                <ul class="list-unstyled mt-4 small">
+                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Art & Valuables</li>
+                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Pet Damage</li>
+                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Deep Cleaning</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="protection-card">
+                <div class="shield-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <h3 class="fw-bold">$1M Host Liability Insurance</h3>
+                <p class="text-muted">In the rare event that a guest gets hurt or their property is damaged during a stay, you’re protected by our $1 million liability insurance.</p>
+                <ul class="list-unstyled mt-4 small">
+                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Bodily Injury</li>
+                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Property Damage</li>
+                    <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Legal Defense</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="trust-banner text-center">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="stat-number">24/7</span>
+                <p class="mb-0 opacity-75">Priority Support</p>
+            </div>
+            <div class="col-md-4">
+                <span class="stat-number">$1M+</span>
+                <p class="mb-0 opacity-75">Liability Coverage</p>
+            </div>
+            <div class="col-md-4">
+                <span class="stat-number">100+</span>
+                <p class="mb-0 opacity-75">Countries Protected</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 pt-5">
+        <div class="col-lg-5">
+            <h2 class="fw-bold mb-4">Simple, fast reimbursement.</h2>
+            <p class="text-muted lead">If something goes wrong, we’ve made the process of getting reimbursed as simple as possible.</p>
+        </div>
+        <div class="col-lg-6 offset-lg-1">
+            <div class="claim-process-step">
+                <div class="step-number">1</div>
+                <h5 class="fw-bold">Gather Evidence</h5>
+                <p class="small text-muted">Take photos or videos of the damage and get a repair or replacement estimate.</p>
+            </div>
+            <div class="claim-process-step">
+                <div class="step-number">2</div>
+                <h5 class="fw-bold">Contact Guest</h5>
+                <p class="small text-muted">Submit a request to your guest through our Resolution Centre within 14 days of checkout.</p>
+            </div>
+            <div class="claim-process-step" style="border:none;">
+                <div class="step-number">3</div>
+                <h5 class="fw-bold">Get Reimbursed</h5>
+                <p class="small text-muted">If the guest doesn't pay, Staycation steps in to cover the cost under AirCover.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center py-5 border-top">
+    <p class="text-muted small px-4 mx-auto" style="max-width: 700px;">
+        AirCover for Hosts’ $3M Guest Damage Protection and $1M Host Liability Insurance are subject to terms, conditions, and exclusions. 
+        Claims in Rajkot are processed according to local insurance regulations.
+    </p>
+</div>

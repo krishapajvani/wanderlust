@@ -1,0 +1,359 @@
+/* 1. GLOBAL & LAYOUT STYLES */
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #222222;
+}
+
+.container {
+    flex: 1;
+}
+
+/* 2. EXTRAORDINARY NAVBAR COMPONENTS */
+
+/* Pill Search Bar */
+.search-pill {
+    border: 1px solid #DDDDDD;
+    border-radius: 40px;
+    background: white;
+    padding: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease;
+    width: 350px;
+}
+
+.search-pill:hover {
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+.search-pill input {
+    border: none !important;
+    font-size: 0.9rem;
+    outline: none !important;
+}
+
+.search-pill input:focus {
+    box-shadow: none !important;
+}
+
+.btn-search-icon {
+    background-color: #FF385C !important; /* Airbnb Signature Red */
+    color: white !important;
+    border-radius: 50% !important;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* User Profile Button */
+.user-profile-btn {
+    background-color: white !important;
+    border: 1px solid #DDDDDD !important;
+    border-radius: 30px !important;
+    padding: 8px 8px 8px 14px !important;
+    display: flex;
+    align-items: center;
+    transition: 0.25s ease-in-out !important;
+}
+
+.user-profile-btn:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18) !important;
+}
+
+.dropdown-toggle::after {
+    display: none !important; /* Remove default bootstrap arrow */
+}
+
+/* Dropdown Menu Refinement */
+.dropdown-radius {
+    border-radius: 12px !important;
+    min-width: 240px;
+    padding: 8px 0 !important;
+    border: none !important;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.15) !important;
+}
+
+.dropdown-item {
+    font-size: 0.95rem;
+    padding: 12px 16px !important;
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #F7F7F7 !important;
+}
+
+/* 3. INDEX PAGE: FILTERS & TAX TOGGLE */
+#filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    color: #222 !important;
+    text-decoration: none !important;
+}
+
+/* Hide scrollbar for filters */
+#filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter {
+    text-align: center;
+    margin-right: 2.5rem;
+    margin-top: 1.5rem;
+    opacity: 0.6;
+    transition: 0.25s ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.filter:hover {
+    opacity: 1;
+    border-bottom: 2px solid #fe424d; /* Brand color indicator */
+}
+
+.filter i {
+    font-size: 1.3rem;
+}
+
+.filter p {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    text-decoration: none !important;
+}
+/* 1. Category Filter Link Styling */
+.filter a {
+    color: #222222 !important;      /* Change text color to black/dark gray */
+    text-decoration: none !important; /* Remove the underline */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 2. Remove underline on hover for a cleaner look */
+.filter a:hover {
+    text-decoration: none !important;
+    color: #000000 !important;
+}
+
+/* 3. Icon and Text Alignment */
+.filter i {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.filter p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.tax-toggle {
+    border: 1px solid #DDDDDD;
+    border-radius: 1rem;
+    padding: 0.8rem 1.2rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    margin-left: auto;
+}
+
+.tax-toggle:hover {
+    background: #f7f7f7;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+}
+
+/* 4. LISTING CARDS */
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-container {
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.card-img-top {
+    width: 100% !important;
+    height: 18rem !important;
+    object-fit: cover !important;
+    transition: transform 0.5s ease;
+}
+
+.listing-card:hover .card-img-top {
+    transform: scale(1.08); /* Modern zoom effect */
+}
+
+.card-body {
+    padding: 0.5rem 0 !important;
+}
+
+.listing-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.listing-title {
+    font-size: 1.05rem;
+    color: #222;
+}
+
+.listing-price {
+    font-size: 0.95rem;
+    color: #484848;
+}
+
+.tax-info {
+    display: none;
+    color: #717171;
+    font-weight: 500;
+}
+
+/* 5. SHOW PAGE & REVIEWS */
+.show-img {
+    height: 40vh;
+    border-radius: 1.5rem;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.review-card {
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    border-radius: 0.8rem !important;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.review-comment {
+    font-size: 0.9rem;
+    color: #484848;
+    line-height: 1.4;
+}
+
+.fa-circle-user {
+    font-size: 1.1rem;
+    margin-right: 5px;
+}
+
+/* 6. BUTTONS & FOOTER */
+.edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.reserve-btn {
+    background-color: #22a366 !important;
+    padding: 0.8rem 3rem !important;
+    font-weight: 600 !important;
+    border: none !important;
+    border-radius: 0.5rem;
+    transition: 0.2s;
+}
+
+.reserve-btn:hover {
+    background-color: #1e8e58 !important;
+}
+
+.f-info {
+    text-align: center;
+    background-color: #ebebeb;
+    padding: 2rem 0;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+    margin: 0 0.5rem;
+}
+
+/* 7. RESPONSIVE MEDIA QUERIES */
+@media (max-width: 992px) {
+    .tax-toggle {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-pill {
+        width: 100%;
+    }
+    
+    .review-card {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+#filters {
+    display: flex;
+    align-items: center;
+    overflow-x: auto; /* Allows scrolling on mobile/small screens */
+    scrollbar-width: none; /* Hides scrollbar for Firefox */
+    width: 80%;
+}
+
+#filters::-webkit-scrollbar {
+    display: none; /* Hides scrollbar for Chrome/Safari */
+}
+
+.filter {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    opacity: 0.7;
+    transition: 0.2s;
+    min-width: 60px; /* Ensures text doesn't wrap awkwardly */
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+    border-bottom: 2px solid #000;
+}
+
+.filter a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.filter i {
+    font-size: 1.2rem;
+}
+
+.filter p {
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+}
+
+.tax-toggle {
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    height: 3.2rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.tax-toggle label {
+    font-size: 0.85rem;
+}

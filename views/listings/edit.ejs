@@ -1,0 +1,136 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    .edit-card {
+        border: none;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        background: #ffffff;
+    }
+    .preview-box {
+        border-radius: 1rem;
+        overflow: hidden;
+        border: 1px solid #ddd;
+        max-width: 300px;
+    }
+    .form-label { font-weight: 600; color: #222; }
+    .btn-save {
+        background: linear-gradient(90deg, #ff385c 0%, #e61e4d 100%);
+        border: none;
+        padding: 0.8rem;
+        font-weight: 700;
+        border-radius: 0.8rem;
+    }
+</style>
+
+<div class="row mt-4 mb-5">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="edit-card p-4 p-md-5">
+            <h2 class="fw-bold mb-1"><i class="fa-solid fa-pen-to-square text-danger me-2"></i>Edit Your Listing</h2>
+            <p class="text-muted mb-4">Update the details of your property below.</p>
+            <hr class="mb-4 opacity-50">
+
+            <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+                
+                <div class="mb-4">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control rounded-3" required />
+                    <div class="invalid-feedback">Title is required.</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" rows="4" class="form-control rounded-3" required><%= listing.description %></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label d-block">Current Image</label>
+                    <div class="preview-box mb-3">
+                        <img src="<%= originalImageUrl %>" id="previewImg" class="img-fluid" alt="listing_image">
+                    </div>
+                    <label for="image" class="form-label">Upload New Image (Optional)</label>
+                    <input name="listing[image]" id="imageInput" type="file" class="form-control rounded-3" />
+                </div>
+
+                <div class="row">
+                    <div class="mb-4 col-md-6">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="listing[category]" class="form-select rounded-3" required>
+                            <% const categories = ["Trending", "Rooms", "Iconic Cities", "Mountains", "Castles", "Amazing Pools", "Camping", "Farm", "Arctic", "Beach", "Boat", "Lake", "Historical Homes", "Countryside"]; %>
+                            <% for(let cat of categories) { %>
+                                <option value="<%= cat %>" <%= listing.category === cat ? 'selected' : '' %>><%= cat %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="mb-4 col-md-6">
+                        <label for="price" class="form-label">Price per Night (₹)</label>
+                        <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control rounded-3" required />
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Edit Amenities</label>
+                    <div class="row g-3 p-3 border rounded-4 bg-light">
+                        <% const amenityList = ["Fast WiFi", "Free Parking", "Full Kitchen", "AC / Heating", "Pool", "TV"]; %>
+                        <% for(let am of amenityList) { %>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="listing[amenities]" value="<%= am %>" id="<%= am %>"
+                                    <%= listing.amenities && listing.amenities.includes(am) ? 'checked' : '' %> >
+                                    <label class="form-check-label small" for="<%= am %>"><%= am %></label>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-4 col-md-6">
+                        <label for="location" class="form-label">Location</label>
+                        <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control rounded-3" required />
+                    </div>
+                    <div class="mb-4 col-md-6">
+                        <label for="country" class="form-label">Country</label>
+                        <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control rounded-3" required />
+                    </div>
+                </div>
+
+                <button class="btn btn-danger btn-save w-100 mt-2 text-white shadow">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Live Image Preview for Edit
+    const imageInput = document.getElementById('imageInput');
+    const previewImg = document.getElementById('previewImg');
+
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener('load', function() {
+                previewImg.setAttribute('src', this.result);
+            });
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Bootstrap Validation
+    (() => {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>

@@ -1,0 +1,196 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    .add-card {
+        border: none;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        background: #ffffff;
+    }
+    .preview-container {
+        width: 100%;
+        height: 250px;
+        border: 2px dashed #ddd;
+        border-radius: 1rem;
+        display: none; /* Hidden until image is selected */
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        margin-top: 10px;
+        background-color: #f8f9fa;
+    }
+    .preview-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .form-label { font-weight: 600; color: #222; }
+    .amenity-label { cursor: pointer; font-size: 0.9rem; }
+    .btn-add {
+        background: linear-gradient(90deg, #ff385c 0%, #e61e4d 100%);
+        border: none;
+        padding: 1rem;
+        font-weight: 700;
+        border-radius: 0.8rem;
+        transition: 0.3s;
+    }
+    .btn-add:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(230, 30, 77, 0.3); }
+</style>
+
+<div class="row mt-4 mb-5">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="add-card p-4 p-md-5">
+            <h2 class="fw-bold mb-1"><i class="fa-solid fa-house-chimney-medical text-danger me-2"></i>Host Your Place</h2>
+            <p class="text-muted mb-4">Share your space with travelers from around the world.</p>
+            <hr class="mb-4 opacity-50">
+
+            <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+                
+                <div class="mb-4">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="listing[title]" placeholder="e.g. Modern Apartment with Sea View" type="text" class="form-control rounded-3 py-2" required />
+                    <div class="invalid-feedback">Please enter a catchy title.</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" rows="4" placeholder="Describe your home, neighborhood, and special features..." class="form-control rounded-3" required></textarea>
+                    <div class="invalid-feedback">A description is required.</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="image" class="form-label">Property Image</label>
+                    <input name="listing[image]" id="imageInput" type="file" class="form-control rounded-3" required />
+                    <div id="imagePreview" class="preview-container mt-3">
+                        <img src="" id="previewImg" alt="Preview">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-4 col-md-6">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="listing[category]" class="form-select rounded-3 py-2" required>
+                            <option value="" selected disabled>Select Category</option>
+                            <option value="Trending">Trending</option>
+                            <option value="Rooms">Rooms</option>
+                            <option value="Iconic Cities">Iconic Cities</option>
+                            <option value="Mountains">Mountains</option>
+                            <option value="Castles">Castles</option>
+                            <option value="Amazing Pools">Amazing Pools</option>
+                            <option value="Camping">Camping</option>
+                            <option value="Farm">Farm</option>
+                            <option value="Arctic">Arctic</option>
+                            <option value="Beach">Beach</option>
+                            <option value="Boat">Boat</option>
+                            <option value="Lake">Lake</option>
+                            <option value="Historical Homes">Historical Homes</option>
+                            <option value="Countryside">Countryside</option>
+                        </select>
+                        <div class="invalid-feedback">Please choose a category.</div>
+                    </div>
+
+                    <div class="mb-4 col-md-6">
+                        <label for="price" class="form-label">Price per Night (₹)</label>
+                        <input name="listing[price]" placeholder="1500" type="number" class="form-control rounded-3 py-2" required />
+                        <div class="invalid-feedback">Please enter a valid price.</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">What this place offers</label>
+                    <div class="row g-3 p-3 border rounded-4 bg-white shadow-sm">
+                        <div class="col-6 col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[amenities]" value="Fast WiFi" id="wifi">
+                                <label class="amenity-label" for="wifi"><i class="fa-solid fa-wifi me-2"></i>Fast WiFi</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[amenities]" value="Free Parking" id="parking">
+                                <label class="amenity-label" for="parking"><i class="fa-solid fa-car me-2"></i>Free Parking</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[amenities]" value="Full Kitchen" id="kitchen">
+                                <label class="amenity-label" for="kitchen"><i class="fa-solid fa-kitchen-set me-2"></i>Full Kitchen</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[amenities]" value="AC / Heating" id="ac">
+                                <label class="amenity-label" for="ac"><i class="fa-solid fa-snowflake me-2"></i>AC / Heating</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[amenities]" value="Pool" id="pool">
+                                <label class="amenity-label" for="pool"><i class="fa-solid fa-person-swimming me-2"></i>Pool</label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[amenities]" value="TV" id="tv">
+                                <label class="amenity-label" for="tv"><i class="fa-solid fa-tv me-2"></i>TV</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-4 col-md-6">
+                        <label for="location" class="form-label">Location / City</label>
+                        <input name="listing[location]" placeholder="e.g. Rajkot, Gujarat" type="text" class="form-control rounded-3 py-2" required />
+                        <div class="invalid-feedback">Location is required.</div>
+                    </div>
+                    <div class="mb-4 col-md-6">
+                        <label for="country" class="form-label">Country</label>
+                        <input name="listing[country]" placeholder="e.g. India" type="text" class="form-control rounded-3 py-2" required />
+                        <div class="invalid-feedback">Country name is required.</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-danger btn-add w-100 mt-2 text-white shadow">
+                    <i class="fa-solid fa-cloud-arrow-up me-2"></i>Publish Listing
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Live Image Preview Logic
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            imagePreview.style.display = 'flex';
+            reader.addEventListener('load', function() {
+                previewImg.setAttribute('src', this.result);
+            });
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview.style.display = 'none';
+        }
+    });
+
+    // Form Validation (Bootstrap)
+    (() => {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>

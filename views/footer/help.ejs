@@ -1,0 +1,180 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --text-dark: #222222;
+        --text-light: #717171;
+    }
+
+    /* Hero Section */
+    .help-hero {
+        background-color: #fff;
+        padding: 80px 0;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .help-hero h1 {
+        font-weight: 800;
+        font-size: 3rem;
+        letter-spacing: -1.5px;
+        margin-bottom: 30px;
+    }
+
+    .help-search-wrapper {
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .help-search-input {
+        padding: 15px 30px 15px 60px !important;
+        border-radius: 50px !important;
+        border: 1px solid #ddd !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+        font-size: 1.1rem;
+    }
+
+    .help-search-icon {
+        position: absolute;
+        left: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--brand-red);
+        font-size: 1.2rem;
+    }
+
+    /* Category Cards */
+    .help-card {
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 30px;
+        height: 100%;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: white;
+        text-decoration: none;
+        display: block;
+    }
+
+    .help-card:hover {
+        box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        border-color: var(--brand-red);
+        transform: translateY(-5px);
+    }
+
+    .help-card i {
+        font-size: 2rem;
+        color: var(--brand-red);
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .help-card h5 {
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+
+    .help-card p {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    /* Contact Section */
+    .support-footer {
+        background-color: #f7f7f7;
+        border-radius: 24px;
+        padding: 40px;
+        margin-top: 80px;
+    }
+
+    .btn-contact {
+        border: 2px solid var(--text-dark);
+        border-radius: 12px;
+        padding: 10px 25px;
+        font-weight: 700;
+        transition: 0.3s;
+    }
+
+    .btn-contact:hover {
+        background-color: var(--text-dark);
+        color: white;
+    }
+</style>
+
+<div class="help-hero">
+    <div class="container">
+        <h1>How can we help?</h1>
+        <div class="help-search-wrapper">
+            <i class="fa-solid fa-magnifying-glass help-search-icon"></i>
+            <input type="text" class="form-control help-search-input" placeholder="Search for guides, rules, or safety...">
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <h4 class="fw-bold mb-4">Browse by Topic</h4>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <a href="#" class="help-card">
+                <i class="fa-solid fa-suitcase-rolling"></i>
+                <h5>Guest Help</h5>
+                <p>Learn how to book a stay, communicate with hosts, and manage your trips.</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="help-card">
+                <i class="fa-solid fa-house-chimney"></i>
+                <h5>Hosting Help</h5>
+                <p>Tools and tips for listing your home and earning with Staycation.</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="help-card">
+                <i class="fa-solid fa-credit-card"></i>
+                <h5>Payments & Refunds</h5>
+                <p>Understand how payments work and our standard refund policies.</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="help-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h5>Safety & Security</h5>
+                <p>Resources for staying safe and verified within our community.</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="help-card">
+                <i class="fa-solid fa-user-gear"></i>
+                <h5>Your Account</h5>
+                <p>Manage your password, login security, and personal profile.</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="help-card">
+                <i class="fa-solid fa-earth-americas"></i>
+                <h5>Experiences</h5>
+                <p>Explore unique things to do on your next staycation trip.</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="support-footer text-center">
+        <h3 class="fw-bold mb-3">Still need help?</h3>
+        <p class="text-muted mb-4">Our support team in Rajkot is available 24/7 to help you with your journey.</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="mailto:support@staycation.com" class="btn btn-contact">Contact Us</a>
+            <a href="/terms" class="btn btn-contact">Visit Legal</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,170 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --feature-blue: #4285F4;
+        --text-dark: #222222;
+        --text-muted: #717171;
+    }
+
+    /* Hero Section */
+    .features-hero {
+        padding: 100px 0;
+        background: radial-gradient(circle at 50% 50%, #fff 0%, #f9f9f9 100%);
+        text-align: center;
+    }
+
+    .features-hero h1 {
+        font-weight: 800;
+        font-size: 3.5rem;
+        letter-spacing: -2px;
+        background: linear-gradient(45deg, var(--brand-red), #bd1e59);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Feature Blocks */
+    .feature-row {
+        padding: 80px 0;
+        align-items: center;
+    }
+
+    .feature-row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    .feature-img-wrapper {
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon-box {
+        width: 50px;
+        height: 50px;
+        background: #fff1f3;
+        color: var(--brand-red);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .new-badge {
+        background: var(--feature-blue);
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        display: inline-block;
+    }
+
+    /* Roadmap Section */
+    .roadmap-container {
+        background: var(--text-dark);
+        color: white;
+        border-radius: 40px;
+        padding: 60px;
+        margin: 80px 0;
+    }
+
+    .roadmap-step {
+        border-left: 2px solid rgba(255,255,255,0.1);
+        padding-left: 30px;
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    .roadmap-step::before {
+        content: '';
+        position: absolute;
+        left: -9px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        background: var(--brand-red);
+        border-radius: 50%;
+    }
+</style>
+
+<div class="features-hero">
+    <div class="container">
+        <span class="new-badge">2026 Winter Release</span>
+        <h1 class="animate__animated animate__fadeInUp">What's New on Staycation</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 650px;">
+            We're constantly evolving. Explore the latest tools and features designed to make travel more seamless and hosting more rewarding.
+        </p>
+    </div>
+</div>
+
+<div class="container my-5">
+    
+    <div class="row feature-row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="feature-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1000&q=80" alt="AI Feature" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+            <div class="feature-icon-box"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h2 class="fw-bold mb-3">Staycation AI: Smart Search</h2>
+            <p class="text-muted">No more endless scrolling. Describe your dream trip in natural language—like "A cozy cabin near Rajkot with a fireplace and fast Wi-Fi"—and let our AI find the perfect match.</p>
+        </div>
+    </div>
+
+    <div class="row feature-row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="feature-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80" alt="Group Travel" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+            <div class="feature-icon-box"><i class="fa-solid fa-users-gear"></i></div>
+            <h2 class="fw-bold mb-3">Collaborative Trip Planning</h2>
+            <p class="text-muted">Planning a family trip? Invite friends to your "Wishlist," let them vote on their favorite homes, and split the bill directly through the app.</p>
+        </div>
+    </div>
+
+    <div class="row feature-row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="feature-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80" alt="Work from Home" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1">
+            <div class="feature-icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+            <h2 class="fw-bold mb-3">Work-Ready Verified</h2>
+            <p class="text-muted">Digital nomads, rejoice. We now verify Wi-Fi speeds and ergonomic workspace setups to ensure your "Workation" is actually productive.</p>
+        </div>
+    </div>
+
+    <div class="roadmap-container">
+        <h2 class="fw-bold mb-5 text-center">Coming Soon</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="roadmap-step">
+                    <h5 class="fw-bold">Staycation Passport</h5>
+                    <p class="small opacity-75">A loyalty program that rewards frequent travelers with unique local experiences.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="roadmap-step">
+                    <h5 class="fw-bold">Virtual Tours</h5>
+                    <p class="small opacity-75">Walk through a home in VR before you book to ensure every corner meets your expectations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="roadmap-step">
+                    <h5 class="fw-bold">Host AI Co-Pilot</h5>
+                    <p class="small opacity-75">Automated guest messaging and smart pricing tools for our hosting community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

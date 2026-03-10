@@ -1,0 +1,310 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+    :root {
+        --airbnb-red: #FF385C;
+        --luxury-gold: #D4AF37;
+        --soft-bg: #F8F9FA;
+        --glass-white: rgba(255, 255, 255, 0.95);
+    }
+
+    .booking-container { max-width: 1400px; padding: 4rem 2rem; }
+
+    /* --- REFINED DYNAMIC GIFT CARD STYLES --- */
+    .gift-card-luxe {
+        background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+        border-radius: 24px;
+        padding: 28px;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: transform 0.4s ease;
+    }
+
+    .gift-card-luxe:hover {
+        transform: translateY(-5px) rotateX(2deg);
+    }
+
+    /* Animated background glow */
+    .gift-card-luxe::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(255, 56, 92, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(40px);
+    }
+
+    /* Metallic Chip with Shimmer */
+    .card-chip {
+        width: 45px;
+        height: 35px;
+        background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        border-radius: 6px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .card-chip::after {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
+    .gift-amount {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        background: linear-gradient(to right, #fff, #ccc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .gift-code-wrapper {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 8px 15px;
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+    }
+
+    .gift-code {
+        font-family: 'Monaco', 'Consolas', monospace;
+        letter-spacing: 2px;
+        font-size: 0.9rem;
+        color: #ddd;
+    }
+
+    /* --- PROPERTY CARD STYLES --- */
+    .luxe-card {
+        border: none !important;
+        background: transparent;
+        transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .img-container {
+        position: relative;
+        border-radius: 30px;
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    .img-container img {
+        height: 280px;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+    }
+
+    .luxe-card:hover .img-container img { transform: scale(1.1); }
+
+    .content-overlay {
+        background: var(--glass-white);
+        backdrop-filter: blur(10px);
+        margin: -60px 20px 0 20px;
+        padding: 25px;
+        border-radius: 25px;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .status-pill {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        color: white;
+        padding: 6px 15px;
+        border-radius: 50px;
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .listing-title {
+        font-weight: 800;
+        font-size: 1.25rem;
+        color: #1a1a1a;
+    }
+
+    .date-badge {
+        background: #f1f3f5;
+        border-radius: 15px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-luxe-primary {
+        background: #1a1a1a;
+        color: white;
+        border-radius: 12px;
+        padding: 10px 20px;
+        font-weight: 600;
+        transition: 0.3s;
+        border: none;
+    }
+
+    .btn-luxe-primary:hover {
+        background: var(--airbnb-red);
+        transform: translateY(-2px);
+    }
+</style>
+
+<div class="booking-container">
+    <div class="mb-5 d-flex justify-content-between align-items-end">
+        <div>
+            <h6 class="text-danger fw-bold text-uppercase mb-2" style="letter-spacing: 2px;">Account Dashboard</h6>
+            <h1 class="display-4 fw-bold">Your Next Chapters</h1>
+        </div>
+        <div class="text-end d-none d-md-block">
+            <span class="badge bg-dark rounded-pill px-4 py-2">
+                <i class="fa-solid fa-crown text-warning me-2"></i>Priority Guest
+            </span>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <h4 class="fw-bold mb-4"><i class="fa-solid fa-gift me-2 text-danger"></i>Active Rewards</h4>
+        <div class="row g-4">
+            
+            <% if(allGiftCards && allGiftCards.length > 0) { %>
+                <% for(let card of allGiftCards) { %>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="gift-card-luxe">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="card-chip"></div>
+                                <div class="text-end">
+                                    <img src="/images/logo.png" alt="logo" style="width: 35px; filter: brightness(0) invert(1);">
+                                    <p class="mb-0" style="font-size: 10px; opacity: 0.6;">STAYCATION CARD</p>
+                                </div>
+                            </div>
+                            <div>
+                                <small class="opacity-50 text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 1px;">Available Balance</small>
+                                <div class="gift-amount">&#8377;<%= card.amount.toLocaleString("en-IN") %></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="gift-code-wrapper">
+                                    <span class="gift-code"><%= card.code %></span>
+                                </div>
+                                <button class="btn btn-sm btn-outline-light border-0 opacity-75" onclick="copyCode('<%= card.code %>')">
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+
+            <div class="col-12 col-md-6 col-lg-4">
+                <a href="/gift-cards" class="text-decoration-none">
+                    <div class="h-100 border-2 border-dashed rounded-5 d-flex align-items-center justify-content-center p-5 text-muted" style="border: 2px dashed #ccc; min-height: 230px; background: #fff; transition: 0.3s;" onmouseover="this.style.borderColor='#FF385C'" onmouseout="this.style.borderColor='#ccc'">
+                        <div class="text-center">
+                            <i class="fa-solid fa-circle-plus fs-1 mb-2 text-danger opacity-50"></i>
+                            <p class="fw-bold mb-0">Redeem Gift Card</p>
+                            <small>Add balance to your wallet</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5 opacity-10">
+
+    <h4 class="fw-bold mb-4"><i class="fa-solid fa-map-location-dot me-2 text-danger"></i>Property Bookings</h4>
+    
+    <div class="row g-5">
+        <% for(let booking of allBookings) { %>
+            <div class="col-12 col-lg-4 col-md-6">
+                <div class="luxe-card">
+                    <% if(booking.listing && booking.listing.image) { %>
+                        <div class="img-container">
+                            <img src="<%= booking.listing.image.url %>" alt="property">
+                            <div class="status-pill">
+                                <span class="d-inline-block rounded-circle bg-success me-1" style="width: 8px; height: 8px;"></span> Confirmed
+                            </div>
+                        </div>
+
+                        <div class="content-overlay">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="overflow-hidden">
+                                    <h3 class="listing-title text-truncate" style="max-width: 200px;"><%= booking.listing.title %></h3>
+                                    <p class="text-muted small mb-0">
+                                        <i class="fa-solid fa-map-pin me-1 text-danger"></i> <%= booking.listing.location %>
+                                    </p>
+                                </div>
+                                <span class="badge rounded-pill bg-white text-dark border px-3">
+                                    <%= Math.ceil((new Date(booking.checkOut) - new Date(booking.checkIn)) / (1000 * (60 * 60 * 24))) %> Nights
+                                </span>
+                            </div>
+
+                            <div class="date-badge mb-4">
+                                <div class="flex-grow-1 text-center border-end">
+                                    <small class="d-block text-uppercase text-muted fw-bold" style="font-size: 9px;">Check-In</small>
+                                    <span class="fw-bold"><%= new Date(booking.checkIn).toLocaleDateString('en-US', {day: '2-digit', month: 'short'}) %></span>
+                                </div>
+                                <div class="px-2 text-muted opacity-25"><i class="fa-solid fa-chevron-right"></i></div>
+                                <div class="flex-grow-1 text-center">
+                                    <small class="d-block text-uppercase text-muted fw-bold" style="font-size: 9px;">Check-Out</small>
+                                    <span class="fw-bold"><%= new Date(booking.checkOut).toLocaleDateString('en-US', {day: '2-digit', month: 'short'}) %></span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4 class="fw-bold m-0">&#8377;<%= (booking.totalPrice * 1.18).toLocaleString("en-IN") %></h4>
+                                    <small class="text-muted fw-bold" style="font-size: 9px;">TOTAL WITH GST</small>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <form method="POST" action="/bookings/<%= booking._id %>?_method=DELETE" onsubmit="return confirm('Do you want to cancel this reservation?')">
+                                        <button class="btn btn-outline-dark border-0 btn-sm fw-bold px-3">Cancel</button>
+                                    </form>
+                                    <a href="/listings/<%= booking.listing._id %>" class="btn btn-luxe-primary btn-sm px-4 shadow-sm">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+    </div>
+
+    <% if(allBookings.length === 0 && (!allGiftCards || allGiftCards.length === 0)) { %>
+        <div class="text-center py-5">
+            <i class="fa-solid fa-compass display-1 text-muted opacity-25 mb-4"></i>
+            <h3 class="fw-bold">No activity yet</h3>
+            <p class="text-muted">Start planning your next adventure in Rajkot or beyond.</p>
+            <a href="/listings" class="btn btn-luxe-primary px-5 py-3 shadow">Discover Homes</a>
+        </div>
+    <% } %>
+</div>
+
+<script>
+    function copyCode(code) {
+        navigator.clipboard.writeText(code);
+        alert('Promo code copied to clipboard!');
+    }
+</script>

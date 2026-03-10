@@ -1,0 +1,144 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --text-dark: #222222;
+        --text-light: #717171;
+    }
+
+    /* Hero Section */
+    .policy-hero {
+        background: #fff;
+        padding: 100px 0 60px 0;
+        text-align: center;
+    }
+
+    .policy-hero h1 {
+        font-weight: 800;
+        font-size: 3.5rem;
+        letter-spacing: -2px;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+    }
+
+    .policy-hero p.lead {
+        font-size: 1.5rem;
+        color: #484848;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    /* Core Principles */
+    .principle-card {
+        border: none;
+        background: #F7F7F7;
+        border-radius: 24px;
+        padding: 40px;
+        height: 100%;
+        transition: background 0.3s ease;
+    }
+
+    .principle-card:hover {
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .principle-icon {
+        font-size: 2rem;
+        color: var(--brand-red);
+        margin-bottom: 20px;
+    }
+
+    /* Detailed Content Section */
+    .policy-details {
+        max-width: 800px;
+        margin: 80px auto;
+        line-height: 1.8;
+    }
+
+    .policy-details h2 {
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: var(--text-dark);
+    }
+
+    .commitment-box {
+        border-left: 4px solid var(--brand-red);
+        padding: 30px;
+        background-color: #fffcfc;
+        border-radius: 0 20px 20px 0;
+        margin: 40px 0;
+    }
+
+    @media (max-width: 768px) {
+        .policy-hero h1 { font-size: 2.5rem; }
+        .policy-hero p.lead { font-size: 1.2rem; }
+    }
+</style>
+
+<div class="policy-hero">
+    <div class="container">
+        <h1 class="animate__animated animate__fadeIn">Belong Anywhere.</h1>
+        <p class="lead">Staycation is built on the belief that everyone should be able to travel and belong, regardless of who they are or where they come from.</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="principle-card">
+                <i class="fa-solid fa-people-group principle-icon"></i>
+                <h5 class="fw-bold">Inclusion</h5>
+                <p class="small text-muted">We welcome guests of all backgrounds with authentic hospitality and open minds.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="principle-card">
+                <i class="fa-solid fa-scale-balanced principle-icon"></i>
+                <h5 class="fw-bold">Respect</h5>
+                <p class="small text-muted">We follow local laws and treat every member of our community with dignity.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="principle-card">
+                <i class="fa-solid fa-hand-holding-heart principle-icon"></i>
+                <h5 class="fw-bold">Equity</h5>
+                <p class="small text-muted">We work to eliminate bias and ensure equal access to travel for everyone.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="policy-details">
+        <h2 class="text-center">Our Non-Discrimination Policy</h2>
+        <p>
+            Staycation is committed to fostering a community where people from every background feel welcome and respected, no matter how far they have traveled from home. This commitment rests on two foundational principles that apply to all users of our platform: <strong>inclusion and respect.</strong>
+        </p>
+
+        <div class="commitment-box shadow-sm">
+            <h5 class="fw-bold mb-2">The Staycation Commitment</h5>
+            <p class="mb-0 text-muted italic">
+                "I agree to treat everyone in the Staycation community—regardless of their race, religion, national origin, ethnicity, disability, sex, gender identity, sexual orientation, or age—with respect, and without judgment or bias."
+            </p>
+        </div>
+
+        <h4 class="fw-bold mt-5 mb-3">Specific Guidance</h4>
+        <p>
+            Staycation Hosts may not decline a guest based on race, color, ethnicity, national origin, religion, sexual orientation, gender identity, or marital status. We also strictly prohibit discrimination based on physical or mental disabilities. Our community in Rajkot and worldwide thrives when we embrace diversity.
+        </p>
+
+        <p class="mt-4">
+            If you ever experience behavior that contradicts this policy, please report it immediately via our <a href="/help" class="text-danger fw-bold">Help Centre</a>. We take these reports seriously and will take action, including permanent account removal.
+        </p>
+    </div>
+</div>
+
+<div class="bg-dark text-white py-5 text-center mt-5 rounded-top-5">
+    <div class="container">
+        <h3 class="fw-bold mb-3">Building a world where anyone can belong.</h3>
+        <p class="opacity-75 mb-4">Thank you for being a part of our inclusive community.</p>
+        <a href="/listings" class="btn btn-outline-light rounded-pill px-5 fw-bold">Explore Listings</a>
+    </div>
+</div>

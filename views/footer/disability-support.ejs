@@ -1,0 +1,168 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --text-dark: #222222;
+        --text-light: #717171;
+        --access-blue: #0076D6;
+    }
+
+    .support-hero {
+        padding: 80px 0;
+        background: #fff;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .support-hero h1 {
+        font-weight: 800;
+        font-size: 3rem;
+        letter-spacing: -1.5px;
+        color: var(--text-dark);
+    }
+
+    /* Feature Cards */
+    .access-card {
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 30px;
+        height: 100%;
+        transition: all 0.3s ease;
+        background: white;
+    }
+
+    .access-card:hover {
+        border-color: var(--access-blue);
+        box-shadow: 0 10px 25px rgba(0, 118, 214, 0.1);
+    }
+
+    .access-icon {
+        font-size: 2.2rem;
+        color: var(--access-blue);
+        margin-bottom: 20px;
+    }
+
+    /* Content Styling */
+    .info-section {
+        max-width: 850px;
+        margin: 60px auto;
+        line-height: 1.8;
+    }
+
+    .info-section h2 {
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    .feature-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .feature-list li {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+    }
+
+    .feature-list li i {
+        color: var(--access-blue);
+        margin-right: 15px;
+        font-size: 1.2rem;
+    }
+
+    .highlight-banner {
+        background-color: #f0f7ff;
+        border-radius: 24px;
+        padding: 40px;
+        margin: 50px 0;
+    }
+
+    .btn-access {
+        background-color: var(--text-dark);
+        color: white !important;
+        padding: 12px 30px;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .btn-access:hover {
+        background-color: var(--access-blue);
+        transform: translateY(-2px);
+    }
+</style>
+
+<div class="support-hero text-center">
+    <div class="container">
+        <h1 class="animate__animated animate__fadeIn">Travel for Everyone.</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;">
+            We’re working to make travel more accessible for everyone. From search filters to verified features, Staycation is here to support your specific needs.
+        </p>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="access-card">
+                <i class="fa-solid fa-wheelchair access-icon"></i>
+                <h5 class="fw-bold">Step-free Access</h5>
+                <p class="small text-muted">Filter homes with step-free paths to the entrance, bedroom, and bathroom for easy movement.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="access-card">
+                <i class="fa-solid fa-ear-listen access-icon"></i>
+                <h5 class="fw-bold">Hearing Support</h5>
+                <p class="small text-muted">Look for listings equipped with visual alarms or assistive listening devices.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="access-card">
+                <i class="fa-solid fa-dog access-icon"></i>
+                <h5 class="fw-bold">Service Animals</h5>
+                <p class="small text-muted">Service animals are always welcome on Staycation at no extra cost, as per our global policy.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h2>How we support your stay</h2>
+        <p>
+            At Staycation, accessibility isn't just a checkbox—it's a commitment. We work closely with our Hosts in Rajkot and worldwide to ensure that accessibility features are accurately represented and verified.
+        </p>
+
+        <div class="highlight-banner">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h4 class="fw-bold mb-2">Verified Accessibility Photos</h4>
+                    <p class="mb-0 text-muted">We review every photo of accessibility features provided by Hosts to ensure they meet our specific requirements for width, clearance, and safety.</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <i class="fa-solid fa-camera-retro fs-1 opacity-25"></i>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="fw-bold mb-3">Key Accessibility Features</h4>
+        <ul class="feature-list mb-5">
+            <li><i class="fa-solid fa-circle-check"></i> Wide doorways (at least 32 inches)</li>
+            <li><i class="fa-solid fa-circle-check"></i> Grab bars for shower and toilet</li>
+            <li><i class="fa-solid fa-circle-check"></i> Accessible parking spot nearby</li>
+            <li><i class="fa-solid fa-circle-check"></i> Lowered light switches and thermostats</li>
+        </ul>
+
+        <div class="text-center mt-5">
+            <h5 class="fw-bold mb-3">Need personalized assistance?</h5>
+            <p class="text-muted mb-4">Our specialized Accessibility Support Team is available 24/7 to help you find the perfect stay.</p>
+            <a href="mailto:access@staycation.com" class="btn-access shadow-sm">
+                <i class="fa-solid fa-envelope me-2"></i> Contact Access Team
+            </a>
+        </div>
+    </div>
+</div>

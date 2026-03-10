@@ -1,0 +1,184 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --text-dark: #222222;
+        --border-gray: #dddddd;
+    }
+
+    body { background-color: #fdfdfd; }
+
+    .gift-hero {
+        padding: 80px 0;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=1500&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        border-radius: 0 0 40px 40px;
+    }
+
+    /* Interactive Card Designs */
+    .card-design {
+        border-radius: 20px;
+        height: 200px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 4px solid transparent;
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+        color: white;
+        position: relative;
+    }
+
+    .card-design.selected {
+        border-color: var(--brand-red);
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(255, 56, 92, 0.2);
+    }
+
+    .card-design h5 { font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+    /* Selection Pills */
+    .amount-pill {
+        border: 1px solid var(--border-gray);
+        border-radius: 50px;
+        padding: 10px 20px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+        background: white;
+    }
+
+    .amount-pill.active {
+        border-color: var(--brand-red);
+        background: #fff1f3;
+        color: var(--brand-red);
+    }
+
+    .purchase-box {
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 24px;
+        padding: 35px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    }
+
+    .btn-buy-gift {
+        background: var(--text-dark);
+        color: white !important;
+        border-radius: 12px;
+        padding: 15px;
+        font-weight: 700;
+        width: 100%;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-buy-gift:hover {
+        background: var(--brand-red);
+        transform: translateY(-2px);
+    }
+</style>
+
+<div class="gift-hero">
+    <div class="container">
+        <h1 class="fw-bold display-4 animate__animated animate__fadeInDown">Staycation Gift Cards</h1>
+        <p class="lead">Give the gift of an unforgettable journey.</p>
+    </div>
+</div>
+
+<div class="container my-5 py-4">
+    <form action="/bookings/giftcards" method="POST" id="giftCardForm">
+        <div class="row g-5">
+            
+            <div class="col-lg-7">
+                <h3 class="fw-bold mb-4">1. Select a design</h3>
+                
+                <input type="hidden" name="design" id="selectedDesign" value="Classic Red">
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card-design selected" onclick="selectDesign(this, 'Classic Red')" style="background: linear-gradient(45deg, #FF385C, #bd1e59);">
+                            <h5>Classic Red</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-design" onclick="selectDesign(this, 'City Lights')" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=500&q=80'); background-size: cover;">
+                            <h5>City Lights</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-design" onclick="selectDesign(this, 'Nature Escape')" style="background: linear-gradient(45deg, #00A699, #007A71);">
+                            <h5>Nature Escape</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-design" onclick="selectDesign(this, 'Premium Black')" style="background: #1A1A1A;">
+                            <h5 style="color: #D4AF37;">Premium Black</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="purchase-box sticky-top" style="top: 100px;">
+                    <h3 class="fw-bold mb-4">2. Gift details</h3>
+                    
+                    <input type="hidden" name="amount" id="selectedAmount" value="5000">
+
+                    <label class="form-label small fw-bold">Select Amount</label>
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        <div class="amount-pill" onclick="selectAmount(this, 1000)">₹1,000</div>
+                        <div class="amount-pill active" onclick="selectAmount(this, 5000)">₹5,000</div>
+                        <div class="amount-pill" onclick="selectAmount(this, 10000)">₹10,000</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Recipient Email</label>
+                        <input type="email" name="recipientEmail" class="form-control" placeholder="friend@gmail.com" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold">Message</label>
+                        <textarea name="message" class="form-control" rows="2" placeholder="Enjoy your Staycation!"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-buy-gift">
+                        Buy Gift Card
+                    </button>
+                    
+                    <p class="text-center mt-3 text-muted small">
+                        <i class="fa-solid fa-lock me-1"></i> Secure Payment processed by Staycation
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<script>
+    // Handle Design Selection
+    function selectDesign(element, designName) {
+        document.querySelectorAll('.card-design').forEach(card => {
+            card.classList.remove('selected');
+        });
+        element.classList.add('selected');
+        // Update hidden input
+        document.getElementById('selectedDesign').value = designName;
+    }
+
+    // Handle Amount Selection
+    function selectAmount(element, value) {
+        document.querySelectorAll('.amount-pill').forEach(pill => {
+            pill.classList.remove('active');
+        });
+        element.classList.add('active');
+        // Update hidden input
+        document.getElementById('selectedAmount').value = value;
+    }
+</script>

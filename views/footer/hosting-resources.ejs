@@ -1,0 +1,172 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --resource-bg: #f8f9fa;
+        --text-dark: #222222;
+    }
+
+    /* Hero Styling */
+    .resources-hero {
+        padding: 80px 0;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1500&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        border-radius: 0 0 40px 40px;
+    }
+
+    /* Guide Cards */
+    .resource-card {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        transition: 0.3s ease;
+        height: 100%;
+    }
+
+    .resource-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+
+    .resource-img {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .resource-content {
+        padding: 25px;
+    }
+
+    .resource-category {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--brand-red);
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    /* Checklist Section */
+    .checklist-container {
+        background-color: #fff1f3;
+        border-radius: 30px;
+        padding: 50px;
+        margin: 60px 0;
+    }
+
+    .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .checklist-item i {
+        background: white;
+        color: var(--brand-red);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+</style>
+
+<div class="resources-hero text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Hosting Resources</h1>
+        <p class="lead">Everything you need to know about hosting on Staycation.</p>
+    </div>
+</div>
+
+<div class="container my-5 py-4">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <h3 class="fw-bold mb-0">Featured Guides</h3>
+        <a href="#" class="text-dark fw-bold small">View all articles</a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="resource-img" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="resource-content">
+                    <span class="resource-category">Getting Started</span>
+                    <h5 class="fw-bold">How to start hosting</h5>
+                    <p class="text-muted small">From creating your listing to welcoming your very first guest.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="resource-img" style="background-image: url('https://images.unsplash.com/photo-1512918766671-ed6a07be0618?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="resource-content">
+                    <span class="resource-category">Interior Design</span>
+                    <h5 class="fw-bold">Setting up your space</h5>
+                    <p class="text-muted small">Design tips to make your home stand out in search results.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="resource-img" style="background-image: url('https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="resource-content">
+                    <span class="resource-category">Safety</span>
+                    <h5 class="fw-bold">Safety and compliance</h5>
+                    <p class="text-muted small">Local laws in Rajkot and safety requirements for your home.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="checklist-container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4">The Host's Checklist</h2>
+                <div class="checklist-item">
+                    <i class="fa-solid fa-check"></i>
+                    <div>
+                        <h6 class="fw-bold mb-1">High-quality photos</h6>
+                        <p class="small text-muted mb-0">Bright, clear photos of every room help guests visualize their stay.</p>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <i class="fa-solid fa-check"></i>
+                    <div>
+                        <h6 class="fw-bold mb-1">Detailed description</h6>
+                        <p class="small text-muted mb-0">Highlight what makes your space unique—is it the view or the location?</p>
+                    </div>
+                </div>
+                <div class="checklist-item">
+                    <i class="fa-solid fa-check"></i>
+                    <div>
+                        <h6 class="fw-bold mb-1">Essential amenities</h6>
+                        <p class="small text-muted mb-0">Make sure you have the basics: towels, soap, and clean linens.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1 d-none d-lg-block">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80" alt="Home interior" class="img-fluid rounded-5 shadow-lg">
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center py-4">
+        <h4 class="fw-bold">Need more help?</h4>
+        <p class="text-muted">Explore our forum or talk to an expert host.</p>
+        <div class="d-flex justify-content-center gap-3 mt-3">
+            <a href="/help" class="btn btn-dark rounded-pill px-4">Visit Help Centre</a>
+            <a href="/listings/new" class="btn btn-danger rounded-pill px-4">Start Your Listing</a>
+        </div>
+    </div>
+</div>

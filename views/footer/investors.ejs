@@ -1,0 +1,166 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --investor-blue: #003580;
+        --text-dark: #222222;
+        --text-muted: #717171;
+    }
+
+    /* Hero Section */
+    .investor-hero {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+        color: white;
+        text-align: center;
+        border-radius: 0 0 40px 40px;
+    }
+
+    .investor-hero h1 {
+        font-weight: 800;
+        font-size: 3.5rem;
+        letter-spacing: -2px;
+    }
+
+    /* Financial Highlights */
+    .stat-card {
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        transition: 0.3s;
+        height: 100%;
+    }
+
+    .stat-card:hover {
+        border-color: var(--brand-red);
+        transform: translateY(-5px);
+    }
+
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--investor-blue);
+        display: block;
+    }
+
+    /* Document Links */
+    .doc-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 30px;
+        background: #f8f9fa;
+        border-radius: 16px;
+        text-decoration: none;
+        color: var(--text-dark);
+        margin-bottom: 15px;
+        transition: 0.2s;
+    }
+
+    .doc-link:hover {
+        background: #eee;
+        color: var(--brand-red);
+    }
+
+    .quarter-badge {
+        font-size: 0.7rem;
+        font-weight: 700;
+        background: var(--investor-blue);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-right: 15px;
+    }
+</style>
+
+<div class="investor-hero">
+    <div class="container">
+        <h1 class="animate__animated animate__fadeIn">Investor Relations</h1>
+        <p class="lead opacity-75">Redefining the future of the experience economy.</p>
+    </div>
+</div>
+
+<div class="container my-5 py-4">
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="stat-card shadow-sm">
+                <span class="stat-value">45%</span>
+                <p class="fw-bold mb-0">Year-over-Year Growth</p>
+                <p class="small text-muted">Revenue increase in Q4 2025</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card shadow-sm">
+                <span class="stat-value">2.5M</span>
+                <p class="fw-bold mb-0">Total Bookings</p>
+                <p class="small text-muted">Completed stays worldwide</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card shadow-sm">
+                <span class="stat-value">120+</span>
+                <p class="fw-bold mb-0">Markets Covered</p>
+                <p class="small text-muted">Active cities across India & beyond</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-7">
+            <h3 class="fw-bold mb-4">Financial Reports</h3>
+            <div class="reports-list">
+                <a href="#" class="doc-link">
+                    <div>
+                        <span class="quarter-badge">2025 Q4</span>
+                        <span class="fw-bold">Quarterly Earnings Release</span>
+                    </div>
+                    <i class="fa-solid fa-file-pdf fs-4"></i>
+                </a>
+                <a href="#" class="doc-link">
+                    <div>
+                        <span class="quarter-badge">2025 Q3</span>
+                        <span class="fw-bold">Shareholder Letter</span>
+                    </div>
+                    <i class="fa-solid fa-file-pdf fs-4"></i>
+                </a>
+                <a href="#" class="doc-link">
+                    <div>
+                        <span class="quarter-badge">2025 FY</span>
+                        <span class="fw-bold">Annual Financial Statement</span>
+                    </div>
+                    <i class="fa-solid fa-file-pdf fs-4"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 offset-lg-1">
+            <div class="p-4 rounded-4 bg-light border">
+                <h5 class="fw-bold mb-3">Investor Contact</h5>
+                <p class="small text-muted mb-4">For inquiries related to stock ownership or financial performance, please contact our IR team.</p>
+                <div class="d-grid">
+                    <a href="mailto:ir@staycation.com" class="btn btn-dark rounded-pill fw-bold">Email IR Team</a>
+                </div>
+                <hr>
+                <h6 class="fw-bold small mb-2">Transfer Agent</h6>
+                <p class="small text-muted mb-0">Computershare Trust Company, N.A.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light py-5 mt-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="fw-bold">Our 2026 Strategy</h2>
+                <p class="text-muted">We are focused on deepening our footprint in Tier-2 cities across India, including a specialized focus on Rajkot as a burgeoning tech and travel hub. Our goal is to double our host community while maintaining industry-leading safety standards.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --news-bg: #ffffff;
+        --text-dark: #222222;
+        --text-muted: #717171;
+    }
+
+    /* Hero Section */
+    .news-hero {
+        padding: 80px 0;
+        background-color: #fff;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .news-hero h1 {
+        font-weight: 800;
+        font-size: 3.5rem;
+        letter-spacing: -2px;
+        color: var(--text-dark);
+    }
+
+    /* Featured Article (The Big One) */
+    .featured-news {
+        background: white;
+        border-radius: 32px;
+        overflow: hidden;
+        border: 1px solid #eee;
+        transition: 0.3s;
+        margin-bottom: 60px;
+    }
+
+    .featured-news:hover {
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .featured-img {
+        height: 450px;
+        background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1500&q=80');
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* News Grid */
+    .news-card {
+        border: none;
+        margin-bottom: 40px;
+        transition: 0.3s;
+        text-decoration: none;
+        display: block;
+    }
+
+    .news-card:hover .news-card-img {
+        transform: scale(1.03);
+    }
+
+    .news-card-img {
+        height: 240px;
+        border-radius: 20px;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 20px;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .news-date {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--brand-red);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .news-card h4 {
+        color: var(--text-dark);
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    /* Newsletter Box */
+    .newsletter-section {
+        background: var(--text-dark);
+        color: white;
+        border-radius: 32px;
+        padding: 60px;
+        margin-top: 50px;
+    }
+
+    .btn-news {
+        background: var(--brand-red);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 12px;
+        font-weight: 600;
+    }
+</style>
+
+<div class="news-hero text-center">
+    <div class="container">
+        <h1 class="animate__animated animate__fadeIn">Staycation Newsroom</h1>
+        <p class="lead text-muted">The latest announcements, stories, and updates from our community.</p>
+    </div>
+</div>
+
+<div class="container my-5">
+    
+    <div class="featured-news row g-0">
+        <div class="col-lg-7 featured-img"></div>
+        <div class="col-lg-5 p-5 d-flex flex-column justify-content-center">
+            <span class="news-date mb-2">Company Update • March 2026</span>
+            <h2 class="fw-bold mb-3">Expanding our horizons: Staycation officially launches in 50 new cities.</h2>
+            <p class="text-muted mb-4">We are thrilled to announce that our platform is now available across more regions in India, bringing unique stays to thousands of new travelers.</p>
+            <a href="#" class="text-dark fw-bold text-decoration-none">Read Full Story <i class="fa-solid fa-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <a href="#" class="news-card">
+                <div class="news-card-img shadow-sm" style="background-image: url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80');"></div>
+                <span class="news-date">Community</span>
+                <h4 class="mt-2">Meet the Superhosts making an impact in Gujarat.</h4>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="news-card">
+                <div class="news-card-img shadow-sm" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80');"></div>
+                <span class="news-date">Product News</span>
+                <h4 class="mt-2">Introducing "Staycation AI": A smarter way to find your perfect home.</h4>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="news-card">
+                <div class="news-card-img shadow-sm" style="background-image: url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&w=800&q=80');"></div>
+                <span class="news-date">Safety</span>
+                <h4 class="mt-2">Our commitment to 100% verified listings by the end of 2026.</h4>
+            </a>
+        </div>
+    </div>
+
+    <div class="newsletter-section text-center">
+        <h2 class="fw-bold mb-3">Stay in the loop</h2>
+        <p class="opacity-75 mb-4">Subscribe to get the latest news and travel inspiration delivered to your inbox.</p>
+        <form class="d-flex justify-content-center gap-2 mx-auto" style="max-width: 500px;">
+            <input type="email" class="form-control rounded-pill border-0 px-4" placeholder="Enter your email">
+            <button class="btn btn-news rounded-pill px-4">Subscribe</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+/* Container Setup */
+.starability-grow {
+  display: flex;
+  flex-direction: row-reverse; /* Crucial for left-to-right hover logic */
+  justify-content: flex-end;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hide the actual radio buttons */
+.starability-grow > input {
+  display: none;
+}
+
+/* Standard Star Appearance (The Base) */
+.starability-grow > label {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Custom SVG via Mask for perfect color control */
+  background-color: #d1d5db; /* Default Grey */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E") no-repeat center;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  text-indent: -9999px;
+}
+
+/* Hover & Checked Logic: Lights up current and previous stars */
+.starability-grow > input:checked ~ label,
+.starability-grow > label:hover,
+.starability-grow > label:hover ~ label {
+  background-color: #ffc107; /* Gold Color */
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px rgba(255, 193, 7, 0.4));
+}
+
+/* Specific Grow Animation on Hover */
+.starability-grow > label:hover {
+  transform: scale(1.3) rotate(5deg);
+  background-color: #ff9800; /* Slightly deeper orange on direct hover */
+}
+
+/* --- Static Display Stars for "All Reviews" --- */
+.starability-result {
+  display: inline-flex;
+  gap: 2px;
+  background: none;
+  height: auto;
+  width: auto;
+}
+
+.starability-result::before {
+  content: "★★★★★";
+  font-size: 20px;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, 
+    #ffc107 var(--rating-percent), 
+    #e1e1e1 var(--rating-percent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+/* Mapping ratings to percentages */
+.starability-result[data-rating="1"] { --rating-percent: 20%; }
+.starability-result[data-rating="2"] { --rating-percent: 40%; }
+.starability-result[data-rating="3"] { --rating-percent: 60%; }
+.starability-result[data-rating="4"] { --rating-percent: 80%; }
+.starability-result[data-rating="5"] { --rating-percent: 100%; }

@@ -1,0 +1,150 @@
+<style>
+    /* Footer Main Container */
+    footer {
+        background-color: #f7f7f7 !important;
+        padding: 4rem 0 2rem 0 !important;
+        border-top: 1px solid #dddddd !important;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Column Headers */
+    .footer-column h6 {
+        font-weight: 700;
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: #222;
+    }
+
+    /* Navigation Links */
+    .footer-link {
+        display: block;
+        color: #484848;
+        text-decoration: none;
+        font-size: 0.95rem;
+        margin-bottom: 0.9rem;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .footer-link:hover {
+        text-decoration: none;
+        color: #000;
+        transform: translateX(3px);
+    }
+
+    /* Social Icons Styling */
+    .f-info-socials i {
+        font-size: 1.4rem;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+        cursor: pointer;
+        color: #222;
+    }
+
+    .f-info-socials i:hover {
+        transform: translateY(-5px);
+        color: #FF385C; 
+    }
+
+    /* Bottom Bar Section */
+    .footer-bottom {
+        margin-top: 3.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid #dddddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .footer-bottom-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .footer-region {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #222;
+        cursor: pointer;
+    }
+
+    .footer-region:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        footer { padding: 3rem 0 1.5rem 0 !important; }
+        .footer-bottom { justify-content: center; text-align: center; }
+        .text-md-end { text-align: left !important; }
+    }
+</style>
+
+<footer class="mt-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-3 footer-column mb-4">
+                <h6>Support</h6>
+                <a href="/help" class="footer-link">Help Centre</a>
+                <a href="/aircover" class="footer-link">AirCover</a>
+                <a href="/anti-discrimination" class="footer-link">Anti-discrimination</a>
+                <a href="/disability-support" class="footer-link">Disability support</a>
+                <!-- <a href="/cancellation-options" class="footer-link">Cancellation options</a> -->
+            </div>
+
+            <div class="col-6 col-md-3 footer-column mb-4">
+                <h6>Hosting</h6>
+                <a href="/listings/new" class="footer-link">Staycation your home</a>
+                <a href="/aircover-hosts" class="footer-link">AirCover for Hosts</a>
+                <!-- <a href="/hosting-resources" class="footer-link">Hosting resources</a> -->
+                <a href="/community-forum" class="footer-link">Community forum</a>
+                <a href="/hosting-responsibly" class="footer-link">Hosting responsibly</a>
+            </div>
+
+            <div class="col-6 col-md-3 footer-column mb-4">
+                <h6>Staycation</h6>
+                <a href="/newsroom" class="footer-link">Newsroom</a>
+                <a href="/new-features" class="footer-link">New features</a>
+                <!-- <a href="/careers" class="footer-link">Careers</a> -->
+                <!-- <a href="/investors" class="footer-link">Investors</a> -->
+                <a href="/gift-cards" class="footer-link">Gift cards</a>
+            </div>
+
+            <div class="col-12 col-md-3 footer-column mb-4 text-md-end">
+                <h6>Stay Connected</h6>
+                <div class="f-info-socials mb-4">
+                    <i class="fa-brands fa-square-facebook ms-md-3 me-2"></i>
+                    <i class="fa-brands fa-square-instagram mx-2"></i>
+                    <i class="fa-brands fa-square-x-twitter mx-2"></i>
+                    <i class="fa-brands fa-linkedin mx-2"></i>
+                </div>
+                <div class="footer-region">
+                    <i class="fa-solid fa-globe me-2"></i> English (IN) 
+                    <span class="ms-3">₹ INR</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="order-2 order-md-1 footer-bottom-links">
+                <span class="text-muted small">&copy; 2026 Staycation Private Limited</span>
+                <span class="mx-1 text-muted">·</span>
+                <a href="/privacy" class="footer-link d-inline small mb-0">Privacy</a>
+                <span class="mx-1 text-muted">·</span>
+                <a href="/terms" class="footer-link d-inline small mb-0">Terms</a>
+                <!-- <span class="mx-1 text-muted">·</span> -->
+                <!-- <a href="" class="footer-link d-inline small mb-0">Sitemap</a> -->
+            </div>
+            
+            <div class="order-1 order-md-2">
+                <p class="small text-muted mb-0">
+                    Designed & Developed with <i class="fa-solid fa-heart text-danger"></i> 
+                    in <strong>Rajkot</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

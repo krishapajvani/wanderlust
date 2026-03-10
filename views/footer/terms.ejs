@@ -1,0 +1,164 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --text-dark: #222222;
+        --text-light: #717171;
+        --bg-glass: rgba(255, 255, 255, 0.9);
+    }
+
+    body {
+        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        min-height: 100vh;
+    }
+
+    .terms-container {
+        max-width: 900px;
+        margin: 60px auto;
+        background: white;
+        padding: 50px;
+        border-radius: 30px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    }
+
+    .terms-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .terms-header h1 {
+        font-weight: 800;
+        font-size: 2.8rem;
+        letter-spacing: -1.5px;
+        color: var(--text-dark);
+    }
+
+    /* Accordion Customization */
+    .accordion-item {
+        border: none !important;
+        margin-bottom: 15px;
+        border-radius: 16px !important;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        border: 1px solid #f0f0f0 !important;
+    }
+
+    .accordion-button {
+        padding: 20px 25px !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem;
+        color: var(--text-dark) !important;
+        background-color: white !important;
+    }
+
+    .accordion-button:not(.collapsed) {
+        color: var(--brand-red) !important;
+        background-color: #fff8f9 !important;
+        box-shadow: none !important;
+    }
+
+    .accordion-button::after {
+        background-size: 1rem;
+    }
+
+    .accordion-body {
+        padding: 25px !important;
+        line-height: 1.8;
+        color: #5e5e5e;
+        background-color: white;
+    }
+
+    /* Important Note Box */
+    .legal-notice {
+        background-color: #fff1f3;
+        border-left: 5px solid var(--brand-red);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+        .terms-container {
+            padding: 25px;
+            margin: 20px;
+        }
+        .terms-header h1 { font-size: 2rem; }
+    }
+</style>
+
+<div class="container pb-5">
+    <div class="terms-container">
+        <div class="terms-header">
+            <span class="badge rounded-pill bg-dark mb-3 px-3 py-2">Effective March 2026</span>
+            <h1>Terms of Service</h1>
+            <p class="text-muted">Please read these terms carefully before using our platform.</p>
+        </div>
+
+        <div class="legal-notice">
+            <i class="fa-solid fa-circle-info me-2 text-danger"></i>
+            <strong>Summary:</strong> By using Staycation, you agree to follow our community standards, local laws in Rajkot, and respect the property of others.
+        </div>
+
+        <div class="accordion accordion-flush" id="termsAccordion">
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#item1">
+                        1. Our Mission & Services
+                    </button>
+                </h2>
+                <div id="item1" class="accordion-collapse collapse show" data-bs-parent="#termsAccordion">
+                    <div class="accordion-body">
+                        Staycation provides an online platform that connects hosts who have accommodations to list with guests seeking to book such accommodations. We do not own, create, sell, or manage any listings. We are the marketplace that brings the community together.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item2">
+                        2. Guest Responsibilities
+                    </button>
+                </h2>
+                <div id="item2" class="accordion-collapse collapse" data-bs-parent="#termsAccordion">
+                    <div class="accordion-body">
+                        As a guest, you are responsible for your own acts and omissions and are also responsible for the acts and omissions of any individuals who you invite to join you at the accommodation. This includes leaving the property in the condition it was in when you arrived.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item3">
+                        3. Host Responsibilities
+                    </button>
+                </h2>
+                <div id="item3" class="accordion-collapse collapse" data-bs-parent="#termsAccordion">
+                    <div class="accordion-body">
+                        Hosts must provide accurate information about their listings, including pricing, availability, and house rules. You are responsible for ensuring that your listing complies with all local laws and regulations in your specific region.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item4">
+                        4. Fees & Cancellations
+                    </button>
+                </h2>
+                <div id="item4" class="accordion-collapse collapse" data-bs-parent="#termsAccordion">
+                    <div class="accordion-body">
+                        Staycation may charge fees to hosts and guests for the use of our platform. All cancellation policies are set by the individual Host and must be clearly stated at the time of booking. Refund eligibility is determined by the specific policy chosen for that listing.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-5 text-center">
+            <p class="text-muted small">Questions about our terms? <a href="mailto:legal@staycation.com" class="text-danger fw-bold">Contact Legal Team</a></p>
+        </div>
+    </div>
+</div>

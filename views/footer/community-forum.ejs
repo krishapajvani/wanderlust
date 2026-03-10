@@ -1,0 +1,165 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --forum-bg: #f7f7f7;
+        --text-dark: #222222;
+    }
+
+    /* Hero Section */
+    .forum-hero {
+        background-color: #fff;
+        padding: 60px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .forum-stats {
+        background: var(--forum-bg);
+        border-radius: 16px;
+        padding: 20px;
+        display: inline-flex;
+        gap: 30px;
+    }
+
+    /* Discussion Cards */
+    .discussion-card {
+        background: white;
+        border: 1px solid #eee;
+        border-radius: 16px;
+        padding: 24px;
+        transition: 0.3s;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+
+    .discussion-card:hover {
+        box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        border-color: var(--brand-red);
+    }
+
+    .topic-tag {
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 50px;
+        background: #fff1f3;
+        color: var(--brand-red);
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        display: inline-block;
+    }
+
+    .user-badge {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    /* Sidebar contributors */
+    .contributor-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .rank-pill {
+        font-size: 0.6rem;
+        background: #000;
+        color: #fff;
+        padding: 2px 8px;
+        border-radius: 4px;
+    }
+</style>
+
+<div class="forum-hero">
+    <div class="container text-center">
+        <h1 class="fw-bold mb-3">Host Community Forum</h1>
+        <p class="text-muted mb-4">A place for Hosts to connect, share stories, and get advice.</p>
+        <div class="forum-stats shadow-sm">
+            <div><strong>12k</strong> <span class="text-muted small">Members</span></div>
+            <div class="vr"></div>
+            <div><strong>45k</strong> <span class="text-muted small">Posts</span></div>
+            <div class="vr"></div>
+            <div><strong>300</strong> <span class="text-muted small">Online Now</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row g-5">
+        <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold mb-0">Trending Discussions</h4>
+                <!-- <button class="btn btn-danger rounded-pill btn-sm px-4 fw-bold">+ New Post</button> -->
+            </div>
+
+            <div class="discussion-card">
+                <span class="topic-tag">Design Tips</span>
+                <h5 class="fw-bold">How to make a small apartment look spacious?</h5>
+                <p class="text-muted small">I'm hosting a studio in Rajkot and want to optimize the space for guests...</p>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="https://i.pravatar.cc/150?u=1" class="user-badge" alt="User">
+                        <span class="small fw-bold">Pajvani Krisha</span>
+                        <span class="text-muted small">• 2h ago</span>
+                    </div>
+                    <div class="text-muted small">
+                        <i class="fa-regular fa-comment me-1"></i> 24  
+                        <i class="fa-regular fa-heart ms-3 me-1"></i> 12
+                    </div>
+                </div>
+            </div>
+
+            <div class="discussion-card">
+                <span class="topic-tag">Guest Experience</span>
+                <h5 class="fw-bold">Welcome gift ideas for first-time guests?</h5>
+                <p class="text-muted small">What do you usually leave for your guests to make them feel special?</p>
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="https://i.pravatar.cc/150?u=2" class="user-badge" alt="User">
+                        <span class="small fw-bold">Rahul Sharma</span>
+                        <span class="text-muted small">• 5h ago</span>
+                    </div>
+                    <div class="text-muted small">
+                        <i class="fa-regular fa-comment me-1"></i> 56  
+                        <i class="fa-regular fa-heart ms-3 me-1"></i> 34
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="p-4 rounded-4 bg-light border mb-4">
+                <h6 class="fw-bold mb-3">Top Contributors</h6>
+                <div class="contributor-item">
+                    <img src="https://i.pravatar.cc/150?u=4" class="user-badge" alt="User">
+                    <div class="flex-grow-1">
+                        <div class="small fw-bold">Aman Varma</div>
+                        <span class="rank-pill">Superhost</span>
+                    </div>
+                    <span class="text-muted small">980 pts</span>
+                </div>
+                <div class="contributor-item">
+                    <img src="https://i.pravatar.cc/150?u=5" class="user-badge" alt="User">
+                    <div class="flex-grow-1">
+                        <div class="small fw-bold">Priya Patel</div>
+                        <span class="rank-pill">Expert</span>
+                    </div>
+                    <span class="text-muted small">750 pts</span>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-4" style="background: #000; color: #fff;">
+                <h6 class="fw-bold mb-2">Community Events</h6>
+                <p class="small opacity-75">Join the next Host Meetup in Gujarat!</p>
+                <hr class="opacity-25">
+                <div class="small mb-2"><i class="fa-regular fa-calendar me-2"></i> March 25, 2026</div>
+                <div class="small mb-3"><i class="fa-solid fa-location-dot me-2"></i> Rajkot Business Center</div>
+                <button class="btn btn-light btn-sm w-100 fw-bold">RSVP Now</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --legal-blue: #004CCB;
+        --text-dark: #222222;
+        --text-light: #717171;
+    }
+
+    /* Top Section */
+    .responsible-hero {
+        padding: 80px 0;
+        background-color: #fff;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .responsible-hero h1 {
+        font-weight: 800;
+        font-size: 3rem;
+        letter-spacing: -1.5px;
+        color: var(--text-dark);
+    }
+
+    /* Grid Layout */
+    .legal-card {
+        border: 1px solid #eee;
+        border-radius: 20px;
+        padding: 35px;
+        height: 100%;
+        transition: 0.3s;
+        background: white;
+    }
+
+    .legal-card:hover {
+        border-color: var(--legal-blue);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .legal-icon {
+        font-size: 2.2rem;
+        color: var(--legal-blue);
+        margin-bottom: 20px;
+    }
+
+    /* Detail Blocks */
+    .regulation-box {
+        background: #f8f9fa;
+        border-radius: 24px;
+        padding: 40px;
+        margin-top: 60px;
+    }
+
+    .safety-check-item {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .safety-check-item i {
+        color: #28a745;
+        margin-top: 5px;
+    }
+
+    .btn-law {
+        border: 2px solid var(--text-dark);
+        border-radius: 12px;
+        padding: 10px 25px;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--text-dark);
+        transition: 0.3s;
+    }
+
+    .btn-law:hover {
+        background: var(--text-dark);
+        color: white;
+    }
+</style>
+
+<div class="responsible-hero text-center">
+    <div class="container">
+        <h1 class="animate__animated animate__fadeIn">Hosting Responsibly.</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 750px;">
+            Being a great Host means more than just a clean room. It's about respecting your neighborhood, following local laws, and ensuring a safe stay for everyone.
+        </p>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="legal-card">
+                <i class="fa-solid fa-shield-heart legal-icon"></i>
+                <h5 class="fw-bold">Safety First</h5>
+                <p class="small text-muted">What can you do to make your home safe? Start with functional smoke detectors and clear emergency exit routes.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="legal-card">
+                <i class="fa-solid fa-gavel legal-icon"></i>
+                <h5 class="fw-bold">Legal Requirements</h5>
+                <p class="small text-muted">Register your property if required by the Rajkot Municipal Corporation or your local government body.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="legal-card">
+                <i class="fa-solid fa-handshake-simple legal-icon"></i>
+                <h5 class="fw-bold">Neighborly Love</h5>
+                <p class="small text-muted">Communicate with your neighbors about your hosting activities and set strict quiet hours for your guests.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="regulation-box shadow-sm">
+        <div class="row">
+            <div class="col-lg-7">
+                <h3 class="fw-bold mb-4">Your Safety Checklist</h3>
+                
+                <div class="safety-check-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <h6 class="fw-bold">Emergency Contacts</h6>
+                        <p class="small text-muted">Post a list of emergency numbers (Ambulance, Fire, Police) near the entrance.</p>
+                    </div>
+                </div>
+
+                <div class="safety-check-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <h6 class="fw-bold">First Aid Kit</h6>
+                        <p class="small text-muted">Keep a fully stocked first aid kit in an accessible location for your guests.</p>
+                    </div>
+                </div>
+
+                <div class="safety-check-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <h6 class="fw-bold">Fire Safety</h6>
+                        <p class="small text-muted">Ensure you have a working fire extinguisher and that guests know where it is located.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="p-4 bg-white rounded-4 border text-center">
+                    <i class="fa-solid fa-book-scale fs-1 text-muted mb-3"></i>
+                    <h5 class="fw-bold">Know the Rules</h5>
+                    <p class="small text-muted mb-4">Regulations for short-term rentals vary by city and building. Always check your local lease or HOA rules.</p>
+                    <a href="/help" class="btn-law">Local Help Centre</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 py-4">
+        <h4 class="fw-bold mb-3">Taxes & Permissions</h4>
+        <p class="text-muted">
+            In many regions, you may need to collect a local occupancy tax or obtain a business license to host. We recommend consulting with a local tax professional in Gujarat to understand your specific obligations. Staying compliant ensures your Staycation business remains sustainable.
+        </p>
+    </div>
+</div>

@@ -1,0 +1,178 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --text-dark: #222222;
+        --text-light: #717171;
+    }
+
+    .cancel-hero {
+        padding: 80px 0;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Policy Tier Cards */
+    .policy-tier-card {
+        border: 1px solid #ddd;
+        border-radius: 24px;
+        padding: 40px;
+        height: 100%;
+        transition: all 0.3s ease;
+        background: white;
+        position: relative;
+    }
+
+    .policy-tier-card:hover {
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        border-color: var(--brand-red);
+    }
+
+    .policy-icon {
+        font-size: 2.5rem;
+        color: var(--brand-red);
+        margin-bottom: 20px;
+    }
+
+    .timeline-bar {
+        height: 8px;
+        background: #eee;
+        border-radius: 10px;
+        margin: 25px 0;
+        position: relative;
+    }
+
+    .timeline-fill {
+        height: 100%;
+        background: #00A699; /* Green for refund period */
+        border-radius: 10px;
+    }
+
+    /* Info Table */
+    .refund-table {
+        max-width: 850px;
+        margin: 60px auto;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid #eee;
+    }
+
+    .refund-table th {
+        background: #f7f7f7;
+        padding: 20px;
+        font-weight: 700;
+    }
+
+    .refund-table td {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .badge-refund {
+        background-color: #e6f7f6;
+        color: #007a71;
+        padding: 5px 12px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+</style>
+
+<div class="cancel-hero text-center">
+    <div class="container">
+        <h1 class="fw-bold display-5 mb-3">Cancellation Options</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;">
+            We offer different cancellation policies to give both guests and hosts peace of mind. Check your specific booking for the policy that applies to your stay.
+        </p>
+    </div>
+</div>
+
+<div class="container my-5">
+    <h3 class="fw-bold mb-4 text-center">Standard Policies</h3>
+    
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="policy-tier-card">
+                <i class="fa-solid fa-leaf policy-icon"></i>
+                <h4 class="fw-bold">Flexible</h4>
+                <p class="text-muted small">Full refund if cancelled 24 hours before check-in.</p>
+                <div class="timeline-bar">
+                    <div class="timeline-fill" style="width: 90%;"></div>
+                </div>
+                <ul class="list-unstyled small text-muted">
+                    <li><i class="fa-solid fa-check text-success me-2"></i> 100% refund (minus fees)</li>
+                    <li><i class="fa-solid fa-check text-success me-2"></i> Cancel up to 24h before</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="policy-tier-card">
+                <i class="fa-solid fa-clock policy-icon"></i>
+                <h4 class="fw-bold">Moderate</h4>
+                <p class="text-muted small">Full refund if cancelled 5 days before check-in.</p>
+                <div class="timeline-bar">
+                    <div class="timeline-fill" style="width: 60%;"></div>
+                </div>
+                <ul class="list-unstyled small text-muted">
+                    <li><i class="fa-solid fa-check text-success me-2"></i> 100% refund (minus fees)</li>
+                    <li><i class="fa-solid fa-check text-success me-2"></i> Cancel up to 5 days before</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="policy-tier-card">
+                <i class="fa-solid fa-lock policy-icon"></i>
+                <h4 class="fw-bold">Firm</h4>
+                <p class="text-muted small">Full refund only if cancelled 30 days before check-in.</p>
+                <div class="timeline-bar">
+                    <div class="timeline-fill" style="width: 30%;"></div>
+                </div>
+                <ul class="list-unstyled small text-muted">
+                    <li><i class="fa-solid fa-check text-success me-2"></i> 50% refund after 30 days</li>
+                    <li><i class="fa-solid fa-check text-success me-2"></i> Non-refundable if < 7 days</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="refund-table shadow-sm">
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th>Timing of Cancellation</th>
+                    <th>Refund Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>More than 30 days before check-in</td>
+                    <td><span class="badge-refund">FULL REFUND</span></td>
+                </tr>
+                <tr>
+                    <td>7 to 30 days before check-in</td>
+                    <td><span class="badge-refund" style="background:#fff4e6; color:#b45309;">50% REFUND</span></td>
+                </tr>
+                <tr>
+                    <td>Less than 7 days before check-in</td>
+                    <td><span class="badge-refund" style="background:#fef2f2; color:#b91c1c;">NO REFUND</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-5 p-5 bg-light rounded-5">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="fw-bold">Extenuating Circumstances</h4>
+                <p class="text-muted mb-0">In rare cases of large-scale emergencies or government-mandated travel restrictions, our global policy may override individual host policies to protect our community.</p>
+            </div>
+            <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                <a href="/help" class="btn btn-outline-dark rounded-pill px-4 fw-bold">Read Policy Details</a>
+            </div>
+        </div>
+    </div>
+</div>

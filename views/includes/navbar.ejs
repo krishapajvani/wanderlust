@@ -1,0 +1,164 @@
+<style>
+    :root {
+        --brand-color: #FF385C;
+        --nav-height: 80px;
+        --glass-white: rgba(255, 255, 255, 0.98);
+        --text-main: #222222;
+        --border-light: #DDDDDD;
+    }
+
+    /* Navbar Core */
+    .navbar {
+        height: var(--nav-height);
+        background: var(--glass-white) !important;
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        z-index: 1000;
+    }
+
+    .navbar-brand {
+        color: var(--brand-color) !important;
+        transition: transform 0.2s ease;
+    }
+
+    .navbar-brand:hover {
+        transform: scale(1.02);
+    }
+
+    /* Modern Search Pill */
+    .search-pill {
+        border: 1px solid var(--border-light);
+        border-radius: 40px;
+        padding: 6px 10px 6px 20px;
+        transition: all 0.2s ease;
+        background: #fff;
+        max-width: 400px;
+    }
+
+    .search-pill:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .search-pill input {
+        font-size: 0.9rem;
+        font-weight: 500;
+        box-shadow: none !important; /* Removes blue bootstrap glow */
+    }
+
+    .btn-search-icon {
+        background: var(--brand-color);
+        color: white !important;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+
+    /* User Profile Circular Button */
+    .user-profile-btn {
+        width: 45px;
+        height: 45px;
+        padding: 0 !important;
+        border-radius: 50% !important;
+        background: white;
+        border: 1px solid var(--border-light) !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 0.2s ease !important;
+    }
+
+    .user-profile-btn:hover {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.18) !important;
+    }
+
+    .user-avatar-bg {
+        color: #717171;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Dropdown Styling */
+    .dropdown-radius {
+        border-radius: 12px !important;
+        border: none !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        padding: 8px 0 !important;
+        margin-top: 12px !important;
+    }
+
+    .dropdown-item {
+        padding: 12px 24px !important;
+        font-size: 0.9rem;
+        color: var(--text-main);
+    }
+
+    .dropdown-item:hover {
+        background-color: #f7f7f7 !important;
+    }
+
+    .hover-underline:hover {
+        text-decoration: underline !important;
+    }
+</style>
+
+<nav class="navbar navbar-expand-md sticky-top py-2">
+    <div class="container d-flex align-items-center justify-content-between">
+        
+        <a class="navbar-brand d-flex align-items-center" href="/listings">
+            <i class="fa-solid fa-house-chimney fa-2xl me-2"></i>
+            <span class="fw-bold fs-4 d-none d-lg-inline" style="letter-spacing: -1px;">Staycation</span>
+        </a>
+
+        <div class="search-container d-none d-md-block">
+            <form class="d-flex align-items-center search-pill" role="search" action="/listings" method="GET">
+                <input class="form-control border-0 bg-transparent" type="search" placeholder="Search destinations" name="search">
+                <div class="vr mx-2 text-muted opacity-25" style="height: 20px;"></div>
+                <button class="btn btn-search-icon" type="submit">
+                    <i class="fa-solid fa-magnifying-glass fa-xs"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+            
+            <% if(currUser) { %>
+                <a href="/listings/new" class="d-none d-md-block text-dark text-decoration-none fw-bold small hover-underline">
+                    Host your home
+                </a>
+            <% } %>
+
+            <div class="dropdown">
+                <button class="btn user-profile-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="user-avatar-bg">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </div>
+                </button>
+                
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg dropdown-radius">
+                    <% if(!currUser) { %>
+                        <li><a class="dropdown-item fw-bold" href="/signup">Sign up</a></li>
+                        <li><a class="dropdown-item" href="/login">Log in</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/help">Help Centre</a></li>
+                    <% } %>
+                    
+                    <% if(currUser) { %>
+                        <li><h6 class="dropdown-header text-dark">Welcome, <b><%= currUser.username %></b></h6></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/bookings">My Bookings</a></li>
+                        <li><a class="dropdown-item" href="/listings/new">Host your home</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger fw-bold" href="/logout">Log out</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</nav>

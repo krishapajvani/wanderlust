@@ -1,0 +1,171 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+    :root {
+        --brand-red: #FF385C;
+        --text-dark: #222222;
+        --text-light: #717171;
+        --bg-shade: #f8f9fa;
+    }
+
+    body {
+        background-color: var(--bg-shade);
+    }
+
+    /* Main Container Card */
+    .policy-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #ffffff;
+        padding: 60px;
+        border-radius: 24px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .policy-header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+
+    .last-updated {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    hr {
+        margin: 40px 0;
+        opacity: 0.1;
+    }
+
+    /* Section Styling */
+    .policy-section {
+        margin-bottom: 45px;
+    }
+
+    .policy-section h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 15px;
+    }
+
+    .policy-section p {
+        line-height: 1.8;
+        color: #484848;
+        font-size: 1.05rem;
+    }
+
+    /* Contact Box */
+    .contact-card {
+        background-color: #F7F7F7;
+        border: 1px solid #EBEBEB;
+        padding: 35px;
+        border-radius: 20px;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .contact-card h5 {
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .email-btn {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--brand-red);
+        color: white !important;
+        padding: 12px 25px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+        margin-top: 15px;
+    }
+
+    .email-btn:hover {
+        background-color: #bd1e59;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 56, 92, 0.3);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .policy-container {
+            padding: 30px;
+            margin: 20px;
+            border-radius: 16px;
+        }
+        .policy-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<div class="container pb-5">
+    <div class="policy-container">
+        
+        <div class="policy-header">
+            <h1 class="fw-bold">Privacy Policy</h1>
+            <div class="last-updated">
+                <i class="fa-regular fa-calendar-check"></i>
+                Last Updated: March 10, 2026
+            </div>
+        </div>
+
+        <hr>
+
+        <section class="policy-section">
+            <h3>1. Information We Collect</h3>
+            <p>
+                At <strong>Staycation</strong>, we collect personal information that you provide to us directly. This includes your full name, email address, phone number, and payment details when you book a listing. We also collect profile information and listing details when you sign up as a Host.
+            </p>
+        </section>
+
+        <section class="policy-section">
+            <h3>2. How We Use Information</h3>
+            <p>
+                The information we gather is used primarily to facilitate bookings and provide a seamless travel experience. We use your data to:
+            </p>
+            <ul class="text-muted" style="line-height: 2;">
+                <li>Verify your identity and maintain a trusted community.</li>
+                <li>Process payments and security deposits securely.</li>
+                <li>Send check-in details and host-guest communications.</li>
+                <li>Personalize search results and recommendations in Rajkot and globally.</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h3>3. Data Protection</h3>
+            <p>
+                We prioritize your security. All payment transactions are encrypted using industry-standard SSL technology. We do not store raw credit card information on our servers; instead, we use secure payment tokens to ensure your financial safety.
+            </p>
+        </section>
+
+        <section class="policy-section">
+            <h3>4. Your Rights</h3>
+            <p>
+                You have the right to access, update, or request the deletion of your personal data at any time. You can manage your privacy settings directly through your profile dashboard or by contacting our support team.
+            </p>
+        </section>
+
+        <div class="contact-card shadow-sm">
+            <h5>Still have questions?</h5>
+            <p class="text-muted small">
+                If you have any concerns regarding your privacy or data usage, our legal team in Rajkot is ready to assist.
+            </p>
+            <a href="mailto:privacy@staycation.com" class="email-btn">
+                <i class="fa-regular fa-paper-plane me-2"></i> Contact Privacy Team
+            </a>
+        </div>
+
+    </div>
+</div>
