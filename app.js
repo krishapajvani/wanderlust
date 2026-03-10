@@ -1,6 +1,6 @@
 // 1. Dependencies & Environment
 const dns = require("node:dns/promises");
-dns.setServers(["8.8.8.8", "8.8.4.4"]); 
+dns.setServers(["8.8.8.8", "8.8.4.4"]); // Fix for MongoDB Atlas connection issues
 
 if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
@@ -31,9 +31,10 @@ const bookingRouter = require("./routes/booking.js");
 const dbUrl = process.env.ATLASDB_URL;
 
 // 2. Database Connection
+
 async function main() {
     await mongoose.connect(dbUrl, {
-        family: 4, 
+        family: 4, // Force IPv4 to prevent connection timeouts
         serverSelectionTimeoutMS: 5000
     });
 }
@@ -78,7 +79,7 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 app.use(flash());
 
-// 6. Passport Authentication
+// 6. Passport Authentication (Order is critical)
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -94,6 +95,7 @@ app.use((req, res, next) => {
 });
 
 // 8. Footer & Informational Routes
+// Organized alphabetically for easier management
 app.get("/aircover", (req, res) => res.render("footer/aircover.ejs"));
 app.get("/aircover-for-hosts", (req, res) => res.render("footer/aircover-hosts.ejs"));
 app.get("/anti-discrimination", (req, res) => res.render("footer/anti-discrimination.ejs"));
@@ -112,15 +114,12 @@ app.get("/privacy", (req, res) => res.render("footer/privacy.ejs"));
 app.get("/terms", (req, res) => res.render("footer/terms.ejs"));
 
 // 9. Main Application Routes
-app.use("/", listingRouter);
 
-// IMPORTANT: Always put generic /bookings BEFORE specific /listings/:id/bookings 
-// if they share the same router, to avoid parameter collisions.
-app.use("/bookings", bookingRouter); 
-
+app.use("/", userRouter);
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
-app.use("/listings/:id/bookings", bookingRouter); 
+app.use("/listings/:id/bookings", bookingRouter); // For specific property bookings
+app.use("/bookings", bookingRouter);              // For dashboard and general booking actions
 
 // 10. Error Handling
 app.all("*", (req, res, next) => {
