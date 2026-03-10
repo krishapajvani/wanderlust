@@ -112,7 +112,7 @@ app.get("/privacy", (req, res) => res.render("footer/privacy.ejs"));
 app.get("/terms", (req, res) => res.render("footer/terms.ejs"));
 
 // 9. Main Application Routes
-app.use("/", userRouter);
+app.use("/", listingRouter);
 
 // IMPORTANT: Always put generic /bookings BEFORE specific /listings/:id/bookings 
 // if they share the same router, to avoid parameter collisions.
