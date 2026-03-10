@@ -10,9 +10,8 @@ const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 
 // ==========================================
-// 1. NON-PARAMETERIZED ROUTES (Specific Paths)
+// 1. INDEX & CREATE ROUTES
 // ==========================================
-
 router
   .route("/")
   .get(wrapAsync(listingController.index))
@@ -23,16 +22,19 @@ router
     wrapAsync(listingController.createListing)
   );
 
-// New Listing Form - MUST stay above /:id
+// ==========================================
+// 2. NEW ROUTE (Must be ABOVE /:id)
+// ==========================================
+// This ensures that "new" is treated as a string, not an ID.
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 // ==========================================
-// 2. PARAMETERIZED ROUTES (Routes with :id)
+// 3. PARAMETERIZED ROUTES (:id)
 // ==========================================
 
 /**
  * RESERVE ROUTE
- * Placed above the general /:id route to ensure 'reserve' isn't treated as an ID
+ * Handles booking logic
  */
 router.post("/:id/reserve", isLoggedIn, wrapAsync(async (req, res) => {
     const { id } = req.params;
@@ -55,10 +57,10 @@ router.post("/:id/reserve", isLoggedIn, wrapAsync(async (req, res) => {
     res.redirect(`/listings/${id}`);
 }));
 
-// Edit Listing Form
+// EDIT FORM
 router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));
 
-// Individual Listing Operations (GET, PUT, DELETE)
+// SHOW, UPDATE, DELETE
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))
