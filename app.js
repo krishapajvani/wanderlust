@@ -55,9 +55,13 @@ app.use(express.static(path.join(__dirname, "/public")));
 // 5. Session & Storage
 const store = MongoStore.create({
     mongoUrl: dbUrl,
-    crypto: { secret: process.env.SECRET },
+    crypto: {
+        secret: process.env.SECRET 
+    },
     touchAfter: 24 * 3600, 
 });
+
+store.on("error", (err) => console.log("ERROR in MONGO SESSION STORE", err));
 
 const sessionOptions = {
     store: store,
@@ -89,41 +93,46 @@ app.use((req, res, next) => {
     next();
 });
 
-// ==========================================
-// 8. MAIN ROUTE MOUNTING (THE FIX)
-// ==========================================
+// 8. Footer & Informational Routes
+app.get("/aircover", (req, res) => res.render("footer/aircover.ejs"));
+app.get("/aircover-for-hosts", (req, res) => res.render("footer/aircover-hosts.ejs"));
+app.get("/anti-discrimination", (req, res) => res.render("footer/anti-discrimination.ejs"));
+app.get("/cancellation-options", (req, res) => res.render("footer/cancellation-options.ejs"));
+app.get("/careers", (req, res) => res.render("footer/careers.ejs"));
+app.get("/community-forum", (req, res) => res.render("footer/community-forum.ejs"));
+app.get("/disability-support", (req, res) => res.render("footer/disability-support.ejs"));
+app.get("/gift-cards", (req, res) => res.render("footer/gift-cards.ejs"));
+app.get("/help", (req, res) => res.render("footer/help.ejs"));
+app.get("/hosting-resources", (req, res) => res.render("footer/hosting-resources.ejs"));
+app.get("/hosting-responsibly", (req, res) => res.render("footer/hosting-responsibly.ejs"));
+app.get("/investors", (req, res) => res.render("footer/investors.ejs"));
+app.get("/new-features", (req, res) => res.render("footer/new-features.ejs"));
+app.get("/newsroom", (req, res) => res.render("footer/newsroom.ejs"));
+app.get("/privacy", (req, res) => res.render("footer/privacy.ejs"));
+app.get("/terms", (req, res) => res.render("footer/terms.ejs"));
 
-// STEP 1: Mount User Routes (Signup/Login/Logout)
-// These routes are usually defined as router.get("/signup", ...) in userRouter.
-// Since we use "/", the final path is http://localhost:8080/signup
-app.use("/", userRouter); 
-
-// STEP 2: Mount Listing Routes
-// These routes are usually defined as router.get("/new", ...) in listingRouter.
-// Since we use "/listings", the final path is http://localhost:8080/listings/new
+// 9. Main Application Routes
+app.use("/", userRouter);      // FIXED: Added this to enable /login and /signup
 app.use("/listings", listingRouter);
-
-// STEP 3: Mount Reviews (Nested)
 app.use("/listings/:id/reviews", reviewRouter);
+app.use("/listings/:id/bookings", bookingRouter); 
+app.use("/bookings", bookingRouter); 
 
-// STEP 4: Mount Bookings
-app.use("/listings/:id/bookings", bookingRouter);
-app.use("/bookings", bookingRouter);
-
-// ==========================================
-
-// 9. Error Handling
+// 10. Error Handling
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Found!"));
 });
 
 app.use((err, req, res, next) => {
     let { statusCode = 500, message = "Something went wrong!" } = err;
-    res.status(statusCode).render("error.ejs", { message, err });
+    res.status(statusCode).render("error.ejs", { message });
 });
 
-// 10. Server Initialization
+// 11. Server Initialization
 const port = 8080;
 app.listen(port, () => {
     console.log(`🚀 Staycation Server running at http://localhost:${port}`);
 });
+
+
+
